@@ -1,11 +1,17 @@
-import React from "react";
-import { Circle, Transformer } from "react-konva";
+import React, { useRef, useEffect } from 'react';
+import { Arrow, Transformer } from 'react-konva';
 
-const Circ = ({ shapeProps, isSelected, onSelect, onChange }) => {
-	const shapeRef = React.useRef();
-	const trRef = React.useRef();
+const ArrowSize = ({
+	shapeProps,
+	isSelected,
+	onSelect,
+	onChange,
+	onDragEnd,
+}) => {
+	const shapeRef = useRef();
+	const trRef = useRef();
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (isSelected) {
 			trRef.current.setNode(shapeRef.current);
 			trRef.current.getLayer().batchDraw();
@@ -14,30 +20,29 @@ const Circ = ({ shapeProps, isSelected, onSelect, onChange }) => {
 
 	return (
 		<React.Fragment>
-			<Circle
+			<Arrow
 				onClick={onSelect}
 				ref={shapeRef}
 				{...shapeProps}
 				draggable
-				onDragEnd={e => {
-					onChange({
-						...shapeProps,
-						x: e.target.x(),
-						y: e.target.y(),
-					});
-				}}
-				onTransformEnd={e => {
+				fill='blue'
+				points={[0, 0, 100, 100]}
+				pointerLength={20}
+				pointerWidth={20}
+				fill='black'
+				stroke='black'
+				strokeWidth={4}
+				onDragEnd={onDragEnd}
+				onTransformEnd={(e) => {
 					//transformer is changing scale
 					const node = shapeRef.current;
 					const scaleX = node.scaleX();
 					const scaleY = node.scaleY();
-					node.scaleX(1);
-					node.scaleY(1);
 					onChange({
 						x: node.x(),
 						y: node.y(),
 						width: node.width() * scaleX,
-						height: node.height() * scaleY
+						height: node.height() * scaleY,
 					});
 				}}
 			/>
@@ -46,5 +51,4 @@ const Circ = ({ shapeProps, isSelected, onSelect, onChange }) => {
 	);
 };
 
-
-export default Circ;
+export default ArrowSize;
