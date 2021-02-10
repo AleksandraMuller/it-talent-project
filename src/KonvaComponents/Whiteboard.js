@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
-import GetImage from './KonvaComponents/GetImage';
-import Img from './KonvaComponents/Img';
-import Rectangle from './KonvaComponents/Rectangle';
-import CircleSize from './KonvaComponents/CircleSize';
-import StarSize from './KonvaComponents/StarSize';
-import ArrowSize from './KonvaComponents/ArrowSize';
-import { ReactComponent as SquareLogo } from './assets/square-outline.svg';
-import { ReactComponent as CircleLogo } from './assets/ellipse-outline.svg';
-import { ReactComponent as ArrowLogo } from './assets/arrow-forward-outline.svg';
-import { ReactComponent as StarLogo } from './assets/star-outline.svg';
-import { ReactComponent as PenLogo } from './assets/pencil-outline.svg';
-import { ReactComponent as TrashLogo } from './assets/trash-outline.svg';
-import { ReactComponent as ImageLogo } from './assets/image-outline.svg';
+import Img from './Img';
+import Rectangle from './Rectangle';
+import CircleSize from './CircleSize';
+import StarSize from './StarSize';
+import ArrowSize from './ArrowSize';
 
 import {
 	Stage,
@@ -25,63 +17,27 @@ import {
 	Arrow,
 	Image,
 } from 'react-konva';
-import styled from 'styled-components';
-import { addLine } from './services/brush.js';
+import { ReactComponent as ImageLogo } from '../assets/image-outline.svg';
+import { addLine } from '../services/brush.js';
 import Konva from 'konva';
 
+import {
+	Button,
+	ButtonGroup,
+	StyledSquareLogo,
+	StyledCircleLogo,
+	StyledArrowLogo,
+	StyledPenLogo,
+	StyledStarLogo,
+	StyledTrashLogo,
+	StyledGrid,
+	StyledInput,
+	StyledLabel,
+	StyledText,
+	StyledTitle,
+} from '../styles/Whiteboard.styles';
+
 const { v1: uuidv1 } = require('uuid');
-
-const ButtonGroup = styled.div`
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	z-index: 100;
-	top: 1rem;
-	right: 1rem;
-	background-color: #fff;
-`;
-
-const Button = styled.button`
-	width: 4rem;
-	align-self: flex-end;
-	background-color: #fff;
-	border: none;
-	padding: 0.5rem 0;
-	cursor: pointer;
-`;
-
-const StyledInput = styled.input`
-	align-self: flex-end;
-	width: 4rem;
-	background-color: #fff;
-	border: 0 none;
-`;
-
-const StyledGrid = styled.div`
-	background: #f7f7f7;
-	overflow: hidden;
-	min-height: 100vh;
-	/* background-image: radial-gradient(black 1px, transparent 0);
-	background-size: 40px 40px;
-	background-position: -19px -19px; */
-	background-size: 80px 80px;
-	background-image: linear-gradient(to right, #eee 1px, transparent 1px),
-		linear-gradient(to bottom, #eee 1px, transparent 1px);
-`;
-
-const StyledTitle = styled.div`
-	position: absolute;
-	top: 1rem;
-	left: 1rem;
-	background-color: #fff;
-	opacity: 0.3;
-	color: #000;
-	box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-	width: 10rem;
-	padding: 0.5rem 0;
-`;
-
-const StyledText = styled.p``;
 
 const Whiteboard = () => {
 	const [isDragging, setIsDragging] = useState(false);
@@ -101,15 +57,6 @@ const Whiteboard = () => {
 	const [selectedId, selectShape] = useState(null);
 	const [rectangles, setRectangles] = useState([]);
 	const [shapes, setShapes] = useState([]);
-
-	const shapeEnum = {
-		CIRCLE: 'circle',
-		RECTANGLE: 'rectangle',
-		STAR: 'star',
-		ARROW: 'arrow',
-		TEXT: 'text',
-		IMAGE: 'image',
-	};
 
 	const drawLine = () => {
 		addLine(stageEl.current.getStage(), layerEl.current, 'brush', 'pink');
@@ -212,8 +159,6 @@ const Whiteboard = () => {
 		}
 	};
 
-	console.log(rectangles.map((rect) => rect));
-
 	const checkDeselect = (e) => {
 		// deselect when clicked on empty area
 		const clickedOnEmpty = e.target === e.target.getStage();
@@ -229,33 +174,40 @@ const Whiteboard = () => {
 			</StyledTitle>
 			<ButtonGroup>
 				<Button onClick={addRectangular}>
-					<SquareLogo height='32px' width='32px' stroke='grey' />
+					<StyledSquareLogo height='32px' width='32px' stroke='grey' />
 				</Button>
 				<Button onClick={addCircle}>
 					{' '}
-					<CircleLogo height='32px' width='32px' stroke='grey' />
+					<StyledCircleLogo height='32px' width='32px' stroke='grey' />
 				</Button>
 				<Button onClick={addStar}>
 					{' '}
-					<StarLogo height='32px' width='32px' stroke='grey' />
+					<StyledStarLogo height='32px' width='32px' stroke='grey' />
 				</Button>
 				<Button onClick={addArrow}>
 					{' '}
-					<ArrowLogo height='32px' width='32px' stroke='grey' />
+					<StyledArrowLogo height='32px' width='32px' stroke='grey' />
 				</Button>
 				{/* <Button>Emojis??</Button> */}
 				<Button onClick={drawLine}>
 					{' '}
-					<PenLogo height='32px' width='32px' stroke='grey' />
+					<StyledPenLogo height='32px' width='32px' stroke='grey' />
 				</Button>
 				<Button onClick={eraseLine}>
-					<TrashLogo height='32px' width='32px' stroke='grey' />
+					<StyledTrashLogo height='32px' width='32px' stroke='grey' />
 				</Button>
 				<Button onClick={addText}>Text</Button>
 				{/* <Button>Upload image</Button> */}
 				<Button>Undo</Button>
-				{/* <ImageLogo height='32px' width='32px' stroke='grey' /> */}
-				<StyledInput type='file' onChange={onImageChange}></StyledInput>
+				<StyledInput
+					type='file'
+					name='file'
+					id='file'
+					onChange={onImageChange}></StyledInput>
+				<StyledLabel for='file'>
+					{' '}
+					<ImageLogo height='32px' width='32px' stroke='grey' />
+				</StyledLabel>
 			</ButtonGroup>
 
 			<Stage
@@ -265,10 +217,10 @@ const Whiteboard = () => {
 				onMouseDown={checkDeselect}
 				onTouchStart={checkDeselect}>
 				<Layer ref={layerEl}>
-					{images.map((image, i) => {
+					{images.map((image, index) => {
 						return (
 							<Img
-								key={i}
+								key={index}
 								imageUrl={image.content}
 								isSelected={image.id === selectedId}
 								onSelect={() => {
@@ -276,7 +228,7 @@ const Whiteboard = () => {
 								}}
 								onChange={(newAttrs) => {
 									const imgs = images.slice();
-									imgs[i] = newAttrs;
+									imgs[index] = newAttrs;
 								}}
 								onDragEnd={handleDragEnd}
 							/>

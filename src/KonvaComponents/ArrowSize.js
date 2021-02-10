@@ -45,6 +45,15 @@ const ArrowSize = ({
 						height: node.height() * scaleY,
 					});
 				}}
+				onMouseEnter={(e) => {
+					// style stage container:
+					const container = e.target.getStage().container();
+					container.style.cursor = 'pointer';
+				}}
+				onMouseLeave={(e) => {
+					const container = e.target.getStage().container();
+					container.style.cursor = 'default';
+				}}
 			/>
 			{isSelected && <Transformer ref={trRef} />}
 		</React.Fragment>

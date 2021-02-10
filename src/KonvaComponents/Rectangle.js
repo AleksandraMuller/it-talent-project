@@ -19,7 +19,7 @@ const Rectangle = ({
 	}, [isSelected]);
 
 	return (
-		<React.Fragment>
+		<>
 			<Rect
 				onClick={onSelect}
 				ref={shapeRef}
@@ -41,9 +41,18 @@ const Rectangle = ({
 						height: node.height() * scaleY,
 					});
 				}}
+				onMouseEnter={(e) => {
+					// style stage container:
+					const container = e.target.getStage().container();
+					container.style.cursor = 'pointer';
+				}}
+				onMouseLeave={(e) => {
+					const container = e.target.getStage().container();
+					container.style.cursor = 'default';
+				}}
 			/>
 			{isSelected && <Transformer ref={trRef} />}
-		</React.Fragment>
+		</>
 	);
 };
 

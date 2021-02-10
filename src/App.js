@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Whiteboard from './Whiteboard';
+import Whiteboard from './KonvaComponents/Whiteboard';
 
 function App() {
 	return (
