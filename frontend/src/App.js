@@ -4,6 +4,7 @@ import Whiteboard from './KonvaComponents/Whiteboard';
 import history from '../src/pages/history';
 import HappyThoughts from './pages/HappyThoughts';
 import ChattPage from './pages/ChattPage';
+import StickyNotes from './pages/StickyNotes';
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 				<Route exact path='/whiteboard' component={Whiteboard} />
 				<Route exact path='/happythoughts' component={HappyThoughts} />
 				<Route exact path='/chatt' component={ChattPage} />
+				<Route exact path='/stickies' component={StickyNotes} />
 			</Switch>
 		</Router>
 	);

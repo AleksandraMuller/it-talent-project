@@ -5,22 +5,12 @@ import CircleSize from './CircleSize';
 import StarSize from './StarSize';
 import ArrowSize from './ArrowSize';
 
-import {
-	Stage,
-	Layer,
-	Line,
-	Text,
-	Circle,
-	Transformer,
-	Rect,
-	Star,
-	Arrow,
-	Image,
-} from 'react-konva';
+import { Stage, Layer } from 'react-konva';
 import { ReactComponent as ImageLogo } from '../assets/image-outline.svg';
 import { addLine } from '../services/brush.js';
 import { getText } from '../services/textNode';
 import Konva from 'konva';
+import styled from 'styled-components';
 
 import {
 	Button,
@@ -315,26 +305,6 @@ const Whiteboard = () => {
 							/>
 						);
 					})}
-					{/* {texts.map((text, index) => {
-						return (
-							<Text
-								x={20}
-								y={60}
-								text='ADD TEXT'
-								fontSize={18}
-								fontFamily='Calibri'
-								fill={isDragging ? 'green' : 'black'}
-								width={300}
-								padding={20}
-								align='center'
-								draggable
-								onDragStart={() => {
-									setIsDragging(true);
-								}}
-								onDragEnd={handleDragEnd}
-							/>
-						);
-					})} */}
 				</Layer>
 			</Stage>
 		</StyledGrid>
