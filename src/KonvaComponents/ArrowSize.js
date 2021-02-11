@@ -31,6 +31,7 @@ const ArrowSize = ({
 				pointerWidth={20}
 				fill='black'
 				stroke='black'
+				zIndex='0'
 				strokeWidth={4}
 				onDragEnd={onDragEnd}
 				onTransformEnd={(e) => {

@@ -19,6 +19,7 @@ import {
 } from 'react-konva';
 import { ReactComponent as ImageLogo } from '../assets/image-outline.svg';
 import { addLine } from '../services/brush.js';
+import { getText } from '../services/textNode';
 import Konva from 'konva';
 
 import {
@@ -30,6 +31,7 @@ import {
 	StyledPenLogo,
 	StyledStarLogo,
 	StyledTrashLogo,
+	StyledTextLogo,
 	StyledGrid,
 	StyledInput,
 	StyledLabel,
@@ -120,18 +122,20 @@ const Whiteboard = () => {
 	};
 
 	const addText = () => {
-		const simpleText = new Konva.Text({
-			x: 20,
-			y: 60,
-			text: 'ADD TEXT',
-			fontSize: 18,
-			fontFamily: 'Calibri',
-			fill: '#555',
-			width: 300,
-			padding: 20,
-			align: 'center',
-		});
-		setTexts([...texts, simpleText]);
+		// const simpleText = {
+		// 	x: 20,
+		// 	y: 60,
+		// 	text: 'ADD TEXT',
+		// 	fontSize: 18,
+		// 	fontFamily: 'Calibri',
+		// 	fill: '#555',
+		// 	width: 300,
+		// 	padding: 20,
+		// 	align: 'center',
+		// };
+
+		// setTexts([...texts, simpleText]);
+		getText(stageEl.current.getStage(), layerEl.current);
 	};
 
 	const handleDragEnd = (e) => {
@@ -196,9 +200,11 @@ const Whiteboard = () => {
 				<Button onClick={eraseLine}>
 					<StyledTrashLogo height='32px' width='32px' stroke='grey' />
 				</Button>
-				<Button onClick={addText}>Text</Button>
+				<Button onClick={addText}>
+					<StyledTextLogo height='32px' width='32px' stroke='grey' />
+				</Button>
 				{/* <Button>Upload image</Button> */}
-				<Button>Undo</Button>
+				{/* <Button>Undo</Button> */}
 				<StyledInput
 					type='file'
 					name='file'
@@ -212,8 +218,8 @@ const Whiteboard = () => {
 
 			<Stage
 				ref={stageEl}
-				width={window.outerWidth}
-				height={window.outerHeight}
+				width={window.innerWidth}
+				height={window.innerHeight}
 				onMouseDown={checkDeselect}
 				onTouchStart={checkDeselect}>
 				<Layer ref={layerEl}>
@@ -309,7 +315,7 @@ const Whiteboard = () => {
 							/>
 						);
 					})}
-					{texts.map((text, index) => {
+					{/* {texts.map((text, index) => {
 						return (
 							<Text
 								x={20}
@@ -328,7 +334,7 @@ const Whiteboard = () => {
 								onDragEnd={handleDragEnd}
 							/>
 						);
-					})}
+					})} */}
 				</Layer>
 			</Stage>
 		</StyledGrid>

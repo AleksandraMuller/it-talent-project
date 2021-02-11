@@ -5,6 +5,7 @@ import { ReactComponent as ArrowLogo } from '../assets/arrow-forward-outline.svg
 import { ReactComponent as StarLogo } from '../assets/star-outline.svg';
 import { ReactComponent as PenLogo } from '../assets/pencil-outline.svg';
 import { ReactComponent as TrashLogo } from '../assets/trash-outline.svg';
+import { ReactComponent as TextLogo } from '../assets/text-outline.svg';
 
 export const ButtonGroup = styled.div`
 	display: flex;
@@ -71,6 +72,7 @@ export const StyledText = styled.p``;
 export const StyledLabel = styled.label`
 	cursor: pointer;
 	padding: 0.5rem 0;
+	text-align: center;
 	&:hover {
 		background-color: #f9ffbe;
 	}
@@ -167,6 +169,24 @@ export const StyledPenLogo = styled(PenLogo)`
 `;
 
 export const StyledTrashLogo = styled(TrashLogo)`
+	${Button}:focus & {
+		animation: wiggle 125ms infinite;
+		animation-timing-function: linear;
+	}
+	@keyframes wiggle {
+		0% {
+			transform: translate(2px, 0);
+		}
+		50% {
+			transform: translate(-2px, 0);
+		}
+		100% {
+			transform: translate(2px, 0);
+		}
+	}
+`;
+
+export const StyledTextLogo = styled(TextLogo)`
 	${Button}:focus & {
 		animation: wiggle 125ms infinite;
 		animation-timing-function: linear;
