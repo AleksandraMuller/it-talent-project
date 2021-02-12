@@ -6017,6 +6017,11 @@ html-minifier-terser@^5.0.1:
     relateurl "^0.2.7"
     terser "^4.6.3"
 
+html-to-image@^0.1.1:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/html-to-image/-/html-to-image-0.1.3.tgz#9661a54c30ed9c4b269f4612416b1c7e887de3a7"
+  integrity sha512-8JTGEAAdJGL/nlp3wb/WI8fLMx2dHKOFZMdsvdon23D45ZdtsXDeRm39Wddf04ludQe3OPmvjMJ9nPjI/7hPlg==
+
 html-webpack-plugin@4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-4.5.0.tgz#625097650886b97ea5dae331c320e3238f6c121c"
@@ -9752,11 +9757,6 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
-react-konva-portal@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/react-konva-portal/-/react-konva-portal-1.0.10.tgz#e5cde87ae28632e9696aa769db6e72a709f57413"
-  integrity sha512-/mnoAPVcf6Y8x6AOz3xo2Pd2FMI+6MtVwlkiLlvPe2U2PuV4k0dkPCXR0bkC9z0YHB8rBHHXhCrpCsqAVBJy7A==
-
 react-konva@^17.0.1-3:
   version "17.0.1-3"
   resolved "https://registry.yarnpkg.com/react-konva/-/react-konva-17.0.1-3.tgz#4931c0de642a4ed511ec5aaa2ee113f32d92c68e"
@@ -11780,6 +11780,13 @@ use-image@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/use-image/-/use-image-1.0.7.tgz#b2c42b78d32868762a37631673eb169a244d5ad1"
   integrity sha512-Z8hB8+lAGe25iqO3YaHO7bSvBSGErEakYQ6RGyRrPZoMDLKBIuZ67ikzn8f5ydjWorqFzeX+U3vVwnXoE1Q56Q==
+
+use-screenshot-hook@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/use-screenshot-hook/-/use-screenshot-hook-1.0.2.tgz#dd8cadb4f21162b47f02f4394d97ba3b853f8017"
+  integrity sha512-H4/OCjh+lF3t3++lHChfldQ+muTVGvUUJMdfIQab//oSbi2mzIZa+mO1I5IOAgSYnzwib3JBWO597PBZAlckSg==
+  dependencies:
+    html-to-image "^0.1.1"
 
 use@^3.1.0:
   version "3.1.1"

@@ -11,6 +11,7 @@ import { addLine } from '../services/brush.js';
 import { getText } from '../services/textNode';
 import Konva from 'konva';
 import styled from 'styled-components';
+import { useScreenshot } from 'use-screenshot-hook';
 
 import {
 	Button,
@@ -27,11 +28,14 @@ import {
 	StyledLabel,
 	StyledText,
 	StyledTitle,
+	StyledScreenShotLogo,
 } from '../styles/Whiteboard.styles';
 
 const { v1: uuidv1 } = require('uuid');
 
 const Whiteboard = () => {
+	const { image, takeScreenshot } = useScreenshot();
+	const [screenshots, setScreenShots] = useState([]);
 	const [isDragging, setIsDragging] = useState(false);
 	const [x, setX] = useState(500);
 	const [y, setY] = useState(500);
@@ -161,6 +165,13 @@ const Whiteboard = () => {
 		}
 	};
 
+	const addScreenShot = () => {
+		takeScreenshot();
+		setScreenShots([...screenshots, image]);
+	};
+
+	console.log(image);
+
 	return (
 		<StyledGrid>
 			<StyledTitle>
@@ -193,7 +204,7 @@ const Whiteboard = () => {
 				<Button onClick={addText}>
 					<StyledTextLogo height='32px' width='32px' stroke='grey' />
 				</Button>
-				{/* <Button>Upload image</Button> */}
+
 				{/* <Button>Undo</Button> */}
 				<StyledInput
 					type='file'
@@ -204,8 +215,10 @@ const Whiteboard = () => {
 					{' '}
 					<ImageLogo height='32px' width='32px' stroke='grey' />
 				</StyledLabel>
+				<Button onClick={addScreenShot}>
+					<StyledScreenShotLogo height='32px' width='32px' stroke='grey' />
+				</Button>
 			</ButtonGroup>
-
 			<Stage
 				ref={stageEl}
 				width={window.innerWidth}
