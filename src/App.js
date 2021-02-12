@@ -4,15 +4,16 @@ import Whiteboard from './KonvaComponents/Whiteboard';
 import history from '../src/pages/history';
 import HappyThoughts from './pages/HappyThoughts';
 import ChattPage from './pages/ChattPage';
+import QuotePage from './pages/QuotePage';
 
 function App() {
 	return (
 		<Router history={history}>
 			<Switch>
-				<Route exact path='/' component={StartPage} />
-				<Route exact path='/whiteboard' component={Whiteboard} />
-				<Route exact path='/happythoughts' component={HappyThoughts} />
-				<Route exact path='/chatt' component={ChattPage} />
+				<Route exact path="/" component={StartPage} />
+				<Route exact path="/whiteboard" component={Whiteboard} />
+				<Route exact path="/happythoughts" component={HappyThoughts} />
+				<Route exact path="/chatt" component={QuotePage} />
 			</Switch>
 		</Router>
 	);
