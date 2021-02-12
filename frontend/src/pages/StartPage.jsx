@@ -132,6 +132,9 @@ const StartPage = () => {
 					<StyledLink to='/stickies'>
 						<StyledNavText>stickies</StyledNavText>
 					</StyledLink>
+					<StyledLink to='/chattpage'>
+						<StyledNavText>ChattPage</StyledNavText>
+					</StyledLink>
 				</Nav>
 			</div>
 

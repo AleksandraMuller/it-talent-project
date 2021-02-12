@@ -1,67 +1,78 @@
-import React, { useState, useEffect } from 'react';
+import '../Chat.css';
+import Messages from "../components/Messages";
+import React, { Component } from 'react';
+import Inputmessage from "../components/Inputmessage";
 
-import styled from 'styled-components';
 
-const StyledContainer = styled.div`
-	font-family: 'Oswald', sans-serif;
-	background-color: #fff;
-`;
 
-const StyledHeader = styled.div`
-	padding: 3rem 0;
-`;
 
-const StyledContentCardsContainer = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	padding-bottom: 2rem;
-`;
+function randomName() {
+  const adjectives = ["autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark", "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter", "patient", "twilight", "dawn", "crimson", "wispy", "weathered", "blue", "billowing", "broken", "cold", "damp", "falling", "frosty", "green", "long", "late", "lingering", "bold", "little", "morning", "muddy", "old", "red", "rough", "still", "small", "sparkling", "throbbing", "shy", "wandering", "withered", "wild", "black", "young", "holy", "solitary", "fragrant", "aged", "snowy", "proud", "floral", "restless", "divine", "polished", "ancient", "purple", "lively", "nameless"];
+  const nouns = ["waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning", "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "glitter", "forest", "hill", "cloud", "meadow", "sun", "glade", "bird", "brook", "butterfly", "bush", "dew", "dust", "field", "fire", "flower", "firefly", "feather", "grass", "haze", "mountain", "night", "pond", "darkness", "snowflake", "silence", "sound", "sky", "shape", "surf", "thunder", "violet", "water", "wildflower", "wave", "water", "resonance", "sun", "wood", "dream", "cherry", "tree", "fog", "frost", "voice", "paper", "frog", "smoke", "star"];
+  const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+  const noun = nouns[Math.floor(Math.random() * nouns.length)];
+  return adjective + noun;
+}
 
-const StyledTitle = styled.h1`
-	text-transform: uppercase;
-	text-align: center;
-	font-size: 2rem;
-	color: #020816;
-	@media (min-width: 450px) {
-	}
-	@media (min-width: 767px) {
-		font-size: 2.5rem;
-	}
-	@media (min-width: 1200px) {
-		font-size: 3.5rem;
-	}
-	@media (min-width: 1800px) {
-		font-size: 4.5rem;
-	}
-`;
+function randomColor() {
+  return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+}
 
-const StyledParagraph = styled.p`
-	text-align: center;
-	font-size: 1.2rem;
-	margin: 1rem 1rem 0 1rem;
-	color: #020816;
-	@media (min-width: 450px) {
-		font-size: 1.5rem;
-	}
-	@media (min-width: 767px) {
-		font-size: 2rem;
-	}
-	@media (min-width: 1200px) {
-	}
-	@media (min-width: 1800px) {
-	}
-`;
+class ChattPage extends Component {
+  state = {
+    messages: [],
+    member: {
+      username: randomName(),
+      color: randomColor(),
+    }
+  }
 
-const HappyThoughts = () => {
-	return (
-		<StyledContainer>
-			<StyledHeader>
-				<StyledTitle>chatt</StyledTitle>
-				<StyledParagraph>connect</StyledParagraph>
-			</StyledHeader>
-		</StyledContainer>
-	);
-};
 
-export default HappyThoughts;
+  constructor() {
+    super();
+    this.drone = new window.Scaledrone("aIqby01BATa1PH1e", {
+      data: this.state.member
+    });
+    this.drone.on('open', error => {
+      if (error) {
+        return console.error(error);
+      }
+      const member = {...this.state.member};
+      member.id = this.drone.clientId;
+      this.setState({member});
+    });
+    const room = this.drone.subscribe("observable-room");
+    room.on('data', (data, member) => {
+      const messages = this.state.messages;
+      messages.push({member, text: data});
+      this.setState({messages});
+    });
+  
+  }
+
+  render() {
+    return (
+      <div className="ChattPage">
+        <div className="Chat-header">
+          <h1>Welocme to the T Chat...</h1>
+        </div>
+        <Messages
+          messages={this.state.messages}
+          currentMember={this.state.member}
+        />
+        <Inputmessage
+        onSendMessage={this.onSendMessage}
+      />
+      </div>
+    );
+  }
+
+  onSendMessage = (message) => {
+    this.drone.publish({
+      room: "observable-room",
+      message
+    });
+  }
+}
+export default ChattPage;
+

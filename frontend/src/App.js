@@ -16,6 +16,7 @@ function App() {
 				<Route exact path="/happythoughts" component={HappyThoughts} />
 				<Route exact path="/chatt" component={QuotePage} />
 				<Route exact path="/stickies" component={StickyNotes} />
+				<Route exact path="/Chattpage" component={ChattPage} />
 			</Switch>
 		</Router>
 	);
