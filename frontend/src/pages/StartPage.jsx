@@ -135,6 +135,9 @@ const StartPage = () => {
 					<StyledLink to="/quote-generator">
 						<StyledNavText>Quote generator</StyledNavText>
 					</StyledLink>
+					<StyledLink to='/chattpage'>
+						<StyledNavText>ChattPage</StyledNavText>
+					</StyledLink>
 				</Nav>
 			</div>
 
