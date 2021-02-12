@@ -5,6 +5,7 @@ import history from '../src/pages/history';
 import HappyThoughts from './pages/HappyThoughts';
 import ChattPage from './pages/ChattPage';
 import QuotePage from './pages/QuotePage';
+import StickyNotes from './pages/StickyNotes';
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 				<Route exact path="/whiteboard" component={Whiteboard} />
 				<Route exact path="/happythoughts" component={HappyThoughts} />
 				<Route exact path="/chatt" component={QuotePage} />
+				<Route exact path="/stickies" component={StickyNotes} />
 			</Switch>
 		</Router>
 	);
