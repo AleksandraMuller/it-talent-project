@@ -15,8 +15,10 @@
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.3.1",
     "react-scripts": "4.0.2",
+    "react-stickies": "^0.0.16",
     "styled-components": "^5.2.1",
     "use-image": "^1.0.7",
+    "use-screenshot-hook": "^1.0.2",
     "uuid": "^8.3.2",
     "web-vitals": "^1.0.1"
   },
