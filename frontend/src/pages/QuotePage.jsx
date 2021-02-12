@@ -21,11 +21,8 @@ const QuotePage = (props) => {
 		setQuote(quotesList[randomIndex]);
 	};
 
-	// reach to the api to grab a list of quotes from the server
 	useEffect(() => {
-		// reset error state before reaching out
 		setError({ status: false, message: '' });
-		// check if quotes has been already fetched
 		if (quotesList.length === 0) {
 			fetch(api_url)
 				.then((res) => res.json())

@@ -120,17 +120,20 @@ const StartPage = () => {
 					<StyledLink>
 						<StyledNavText>Home</StyledNavText>
 					</StyledLink>
-					<StyledLink to='/whiteboard'>
+					<StyledLink to="/whiteboard">
 						<StyledNavText>whiteboard</StyledNavText>
 					</StyledLink>
-					<StyledLink to='/happythoughts'>
-						<StyledNavText>happy thoughts</StyledNavText>
+					<StyledLink to="/happythoughts">
+						<StyledNavText>Happy thoughts</StyledNavText>
 					</StyledLink>
-					<StyledLink to='/chatt'>
-						<StyledNavText>chatt</StyledNavText>
+					<StyledLink to="/chatt">
+						<StyledNavText>Chatt</StyledNavText>
 					</StyledLink>
-					<StyledLink to='/stickies'>
-						<StyledNavText>stickies</StyledNavText>
+					<StyledLink to="/stickies">
+						<StyledNavText>Stickies</StyledNavText>
+					</StyledLink>
+					<StyledLink to="/quote-generator">
+						<StyledNavText>Quote generator</StyledNavText>
 					</StyledLink>
 				</Nav>
 			</div>
@@ -145,7 +148,7 @@ const StartPage = () => {
 					</StyledText>
 				</StyledTextWrapper>
 
-				<StyledImage src='https://images.unsplash.com/photo-1598520106830-8c45c2035460?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2767&q=80' />
+				<StyledImage src="https://images.unsplash.com/photo-1598520106830-8c45c2035460?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2767&q=80" />
 				<StyledAnchor onClick={() => history.push('/whiteboard')}>
 					GO TO WHITEBOARD
 				</StyledAnchor>
@@ -161,8 +164,8 @@ const StartPage = () => {
 				</StyledTextWrapper>
 
 				<StyledImage2
-					alt='happy'
-					src='https://images.unsplash.com/photo-1524117074681-31bd4de22ad3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80'
+					alt="happy"
+					src="https://images.unsplash.com/photo-1524117074681-31bd4de22ad3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80"
 				/>
 				<StyledAnchor onClick={() => history.push('/happythoughts')}>
 					GO TO HAPPYTHOUGHTS
@@ -179,13 +182,28 @@ const StartPage = () => {
 					</StyledText>
 				</StyledTextWrapper>
 
-				<StyledImage3 src='https://images.unsplash.com/photo-1488998287214-1e668a8e0dc4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' />
+				<StyledImage3 src="https://images.unsplash.com/photo-1488998287214-1e668a8e0dc4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" />
 				<StyledAnchor onClick={() => history.push('/chatt')}>
 					GO TO CHATT
 				</StyledAnchor>
 			</StyledContainer3>
+			<StyledContainer3>
+				<StyledHeadline>Quote generator</StyledHeadline>
+				<StyledTextWrapper>
+					<StyledText>
+						This is a virtual whiteboard that helps <br />
+						you and your team collaborate <br />
+						to bring the best ideas to light.
+					</StyledText>
+				</StyledTextWrapper>
+
+				<StyledImage3 src="https://images.unsplash.com/photo-1488998287214-1e668a8e0dc4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" />
+				<StyledAnchor onClick={() => history.push('/quote-generator')}>
+					GO TO QOUTEGENERATOR
+				</StyledAnchor>
+			</StyledContainer3>
 			<StyledWrapper>
-				<Accordion title='Why is the sky blue?'>
+				<Accordion title="Why is the sky blue?">
 					Sunlight reaches Earth's atmosphere and is scattered in all directions
 					by all the gases and particles in the air. Blue light is scattered
 					more than the other colors because it travels as shorter, smaller
@@ -196,7 +214,7 @@ const StartPage = () => {
 					scientists think it could be about 43,000°F (24,000°C) near Jupiter's
 					center, or core.
 				</Accordion>
-				<Accordion title='What Is a Black Hole?'>
+				<Accordion title="What Is a Black Hole?">
 					A black hole is an area of such immense gravity that nothing -- not
 					even light -- can escape from it.
 				</Accordion>
