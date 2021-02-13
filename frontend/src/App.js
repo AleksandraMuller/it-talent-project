@@ -11,13 +11,12 @@ function App() {
 	return (
 		<Router history={history}>
 			<Switch>
-				<Route exact path="/" component={StartPage} />
-				<Route exact path="/whiteboard" component={Whiteboard} />
-				<Route exact path="/happythoughts" component={HappyThoughts} />
-				<Route exact path="/chatt" component={ChattPage} />
-				<Route exact path="/stickies" component={StickyNotes} />
-				<Route exact path="/quote-generator" component={QuotePage} />
-				<Route exact path="/Chattpage" component={ChattPage} />
+				<Route exact path='/' component={StartPage} />
+				<Route exact path='/whiteboard' component={Whiteboard} />
+				<Route exact path='/happythoughts' component={HappyThoughts} />
+				<Route exact path='/chatt' component={ChattPage} />
+				<Route exact path='/stickies' component={StickyNotes} />
+				<Route exact path='/quote-generator' component={QuotePage} />
 			</Switch>
 		</Router>
 	);

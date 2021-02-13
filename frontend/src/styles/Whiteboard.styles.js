@@ -20,12 +20,13 @@ export const ButtonGroup = styled.div`
 
 export const Button = styled.button`
 	width: 4rem;
-	align-self: flex-end;
+	/* align-self: flex-end; */
 	background-color: #fff;
 	border: none;
 	padding: 0.5rem 0;
 	cursor: pointer;
 	outline: none;
+	margin: 0 auto;
 	&:hover {
 		background-color: #f9ffbe;
 	}
@@ -65,7 +66,7 @@ export const StyledTitle = styled.div`
 	color: #000;
 	box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 	width: 10rem;
-	padding: 0.5rem 0;
+	padding: 0.5rem;
 `;
 
 export const StyledText = styled.p``;
