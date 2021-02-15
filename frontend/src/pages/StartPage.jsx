@@ -6,13 +6,6 @@ import Footer from '../components/Footer';
 import { useHistory } from 'react-router-dom';
 
 const StyledHeadline = styled.h1`
-	/* color: #17181a;
-	font-size: 3rem;
-	font-weight: 900;
-	line-height: 10rem;
-
-	padding-top: 12rem;
-	margin: 1rem; */
 	margin-bottom: 2rem;
 `;
 
@@ -38,7 +31,6 @@ const StyledText = styled.text`
 const StyledTextWrapper = styled.div`
 	width: 100%;
 	text-align: center;
-	/* margin-left: 5rem; */
 	display: flex;
 	flex-direction: column;
 	@media (min-width: 767px) {
@@ -46,14 +38,12 @@ const StyledTextWrapper = styled.div`
 	}
 `;
 const StyledLink = styled(Link)`
-	color: white;
 	margin-right: 1rem;
 	padding: 1rem;
 	text-decoration: none;
 	font-family: 'News Cycle', sans-serif;
 `;
 const Nav = styled.nav`
-	box-shadow: rgba(233, 233, 233, 0.25) 0 1px;
 	background-color: #17181a;
 	display: flex;
 	justify-content: flex-end;
@@ -95,27 +85,6 @@ const StyledAnchor = styled.a`
 		-webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
 		transform: translateX(-9%) translateY(-25%) rotate(45deg);
 	}
-
-	/* display: inline-block;
-	padding: 0.35em 1.2em;
-	border: 0.1em solid #ffffff;
-	margin: 0 0.3em 0.3em 0;
-	border-radius: 0.12em;
-	box-sizing: border-box;
-	text-decoration: none;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	color: white;
-	text-align: center;
-	transition: all 0.2s;
-	border: 2px solid black;
-	background-color: #17181a;
-	margin: 5rem;
-
-	&:hover {
-		color: black;
-		background-color: white;
-	} */
 `;
 const StyledContainer = styled.div`
 	display: flex;
@@ -134,20 +103,18 @@ const StyledContainer = styled.div`
 	}
 `;
 
-const StyledWrapper = styled.div`
-	/* display: flex;
-	flex-direction: row-reverse;
-	flex-direction: column;
-	width: 56vh; */
-`;
+const StyledWrapper = styled.div``;
 
 const StyledNavText = styled.h3`
 	border-bottom: 2px solid white;
-	font-family: Tele2 Sans;
-	font-style: Regular;
 	font-size: 14px;
 	line-height: 28px;
+	color: #fff;
 	letter-spacing: 5%;
+	${StyledLink}:hover & {
+		color: #ccc;
+		border-bottom: 2px solid #ccc;
+	}
 `;
 
 const StyledSpan = styled.span`
