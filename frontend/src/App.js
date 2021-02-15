@@ -18,7 +18,7 @@ const client = new ApolloClient({
 const App = () => {
 	return (
 		<ApolloProvider client={client}>
-			<Router history={history}>
+			<Router>
 				<Switch>
 					<Route exact path='/' component={StartPage} />
 					<Route exact path='/whiteboard' component={Whiteboard} />
