@@ -18,54 +18,15 @@ const StyledHeader = styled.div`
 	padding: 3rem 0;
 `;
 
-const StyledContentCardsContainer = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	padding-bottom: 2rem;
-`;
-
-const StyledTitle = styled.h1`
-	text-transform: uppercase;
-	text-align: center;
-	font-size: 2rem;
-	color: #020816;
-	@media (min-width: 450px) {
-	}
-	@media (min-width: 767px) {
-		font-size: 2.5rem;
-	}
-	@media (min-width: 1200px) {
-		font-size: 3.5rem;
-	}
-	@media (min-width: 1800px) {
-		font-size: 4.5rem;
-	}
-`;
-
-const StyledParagraph = styled.p`
-	text-align: center;
-	font-size: 1.2rem;
-	margin: 1rem 1rem 0 1rem;
-	color: #020816;
-	@media (min-width: 450px) {
-		font-size: 1.5rem;
-	}
-	@media (min-width: 767px) {
-		font-size: 2rem;
-	}
-	@media (min-width: 1200px) {
-	}
-	@media (min-width: 1800px) {
-	}
-`;
-
 const HappyThoughts = (props) => {
 	const [text, setText] = useState('');
+	const data = props.getThoughtQuery;
+
+	console.log(data);
+
 	// const [hearts, setHearts] = useState();
 	const displayThoughts = () => {
-		const data = props.getThoughtQuery;
-		if (data.loading) {
+		if (data.loading === true) {
 			return <div>Loading thoughts...</div>;
 		} else {
 			return data.thoughts.map((thought) => {
@@ -86,12 +47,13 @@ const HappyThoughts = (props) => {
 
 	const addNewThought = (e) => {
 		e.preventDefault();
-		props.addThoughtMutation({
-			variables: {
-				message: text,
-			},
-			refetchQueries: [{ query: getThoughtQuery }],
-		});
+		text !== '' &&
+			props.addThoughtMutation({
+				variables: {
+					message: text,
+				},
+				refetchQueries: [{ query: getThoughtQuery }],
+			});
 	};
 
 	const updateHeart = (e, heart, id) => {

@@ -15,7 +15,9 @@ app.use(cors());
 
 const mongoUrl = process.env['MONGO_URL'];
 
-mongoose.connect(mongoUrl);
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// mongoose.connect(mongoUrl);
 mongoose.connection.once('open', () => {
 	console.log('connected');
 });
