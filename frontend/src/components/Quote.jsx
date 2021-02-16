@@ -7,6 +7,8 @@ const StyledWrapper = styled.div`
 	padding: auto;
 	padding: 4rem;
 	margin-top: 15rem;
+	background-color: white;
+	border: 5px solid orange;
 `;
 
 const StyledButton = styled.button`
@@ -38,29 +40,24 @@ const StyledQuote = styled.h1`
 	font-size: 2.6rem;
 	line-height: 1.4;
 `;
-const StyledBackgroundImage = styled.html`
-	background-image: url('https://images.unsplash.com/photo-1612993229521-dab666b46b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80');
-`;
 
 const Quote = (props) => {
 	const { value } = props;
 
 	return (
 		<>
-			<StyledBackgroundImage>
-				<StyledWrapper>
-					<StyledQuote>{value.quote}</StyledQuote>
-					<StyledAuthor>-{value.author}</StyledAuthor>
-					<div>
-						<a
-							href={` ${props.value.author}`}
-							target="_blank"
-							rel="noopener noreferrer"
-						></a>
-						<StyledButton onClick={props.onQuoteChange}>New Quote</StyledButton>
-					</div>
-				</StyledWrapper>
-			</StyledBackgroundImage>
+			<StyledWrapper>
+				<StyledQuote>{value.quote}</StyledQuote>
+				<StyledAuthor>-{value.author}</StyledAuthor>
+				<div>
+					<a
+						href={` ${props.value.author}`}
+						target="_blank"
+						rel="noopener noreferrer"
+					></a>
+					<StyledButton onClick={props.onQuoteChange}>New Quote</StyledButton>
+				</div>
+			</StyledWrapper>
 		</>
 	);
 };
