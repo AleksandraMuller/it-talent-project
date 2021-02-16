@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Accordion from '../components/Accordian';
 import Footer from '../components/Footer';
 import { useHistory } from 'react-router-dom';
+import { ReactComponent as HamburgerLogo } from '../assets/menu-outline.svg';
+import radio from '../assets/radio.jpg';
 
 const StyledHeadline = styled.h1`
 	margin-bottom: 2rem;
@@ -38,16 +40,39 @@ const StyledTextWrapper = styled.div`
 	}
 `;
 const StyledLink = styled(Link)`
-	margin-right: 1rem;
-	padding: 1rem;
+	margin-right: 0.5rem;
+	padding: 0.5rem 0.5rem 1rem 0.5rem;
+
 	text-decoration: none;
 	font-family: 'News Cycle', sans-serif;
+	display: none;
+	@media (min-width: 767px) {
+		display: inline-block;
+	}
 `;
+
+const StyledLogoLink = styled(Link)`
+	margin-right: 0.5rem;
+	padding: 0.5rem;
+	display: inline-block;
+	@media (min-width: 767px) {
+		display: none;
+	}
+`;
+
 const Nav = styled.nav`
 	background-color: #17181a;
 	display: flex;
 	justify-content: flex-end;
 	font-family: 'News Cycle', sans-serif;
+	@media (min-width: 450px) {
+	}
+	@media (min-width: 767px) {
+	}
+	@media (min-width: 1200px) {
+	}
+	@media (min-width: 1800px) {
+	}
 `;
 
 const StyledAnchor = styled.a`
@@ -146,6 +171,12 @@ const StartPage = () => {
 				<StyledLink to='/quote-generator'>
 					<StyledNavText>Quote generator</StyledNavText>
 				</StyledLink>
+				<StyledLink to='/developer-sounds'>
+					<StyledNavText>The sounds of...</StyledNavText>
+				</StyledLink>
+				<StyledLogoLink>
+					<HamburgerLogo height='32px' width='32px' fill='white' />
+				</StyledLogoLink>
 			</Nav>
 
 			<StyledFlexbox>
@@ -216,6 +247,21 @@ const StartPage = () => {
 					</StyledTextWrapper>
 
 					<StyledImageLeft src='https://images.unsplash.com/photo-1488998287214-1e668a8e0dc4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' />
+				</StyledContainer>
+				<StyledContainer>
+					<StyledTextWrapper>
+						<StyledHeadline>The sounds of developers</StyledHeadline>
+
+						<StyledText>
+							Hear the sounds that developers <br />
+							make while working
+						</StyledText>
+						<StyledAnchor onClick={() => history.push('/developer-sounds')}>
+							<StyledSpan>EXPLORE NOW</StyledSpan>
+						</StyledAnchor>
+					</StyledTextWrapper>
+
+					<StyledImage src={radio} />
 				</StyledContainer>
 			</StyledFlexbox>
 			<StyledWrapper>

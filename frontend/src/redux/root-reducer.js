@@ -3,6 +3,8 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { notesReducer } from './notes/notesReducer';
 
+// const storage = window.localStorage;
+
 const persistConfig = {
 	key: 'root',
 	storage,
