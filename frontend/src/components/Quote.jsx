@@ -2,65 +2,85 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
-	margin: auto;
 	width: 60%;
-	padding: auto;
-	padding: 4rem;
-	margin-top: 15rem;
+	background-color: transparent;
+	font-family: 'News Cycle', sans-serif;
+
+	/* border: 5px solid orange; */
 `;
 
-const StyledButton = styled.button`
-	background-color: black;
+const StyledButton = styled.a`
+	background-color: #222;
 	color: #fff;
 	border: none;
-	border-radius: 3px;
-	padding: 0 15px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 1.2rem;
+	padding: 0.5rem 15px;
+	text-transform: uppercase;
+	font-size: 0.7rem;
 	text-decoration: none;
+	font-weight: 700;
+	letter-spacing: 4px;
 	cursor: pointer;
+	font-family: 'News Cycle', sans-serif;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+	&:hover {
+		background-color: #e86462;
+	}
+
+	@media (min-width: 1200px) {
+		font-size: 1.2rem;
+	}
 `;
 
 const StyledAuthor = styled.h3`
 	color: black;
 	font-weight: lighter;
-	font-size: 1.4rem;
+	font-size: 1rem;
 	text-align: right;
+	font-family: 'News Cycle', sans-serif;
+	margin: 0.7rem 0 0.7rem 0;
+	@media (min-width: 450px) {
+	}
+	@media (min-width: 767px) {
+		font-size: 1.2rem;
+		margin: 0.7rem 0;
+	}
+	@media (min-width: 1200px) {
+		font-size: 2rem;
+		margin: 1.5rem 0;
+	}
+	@media (min-width: 1800px) {
+	}
 `;
 
 const StyledQuote = styled.h1`
 	color: black;
-	margin-bottom: 40px;
-	font-family: 'Playfair Display', serif;
 	font-weight: 500;
-	font-size: 2.6rem;
+	font-size: 1.3rem;
 	line-height: 1.4;
-`;
-const StyledBackgroundImage = styled.html`
-	background-image: url('https://images.unsplash.com/photo-1612993229521-dab666b46b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80');
+	font-family: 'News Cycle', sans-serif;
+	@media (min-width: 450px) {
+	}
+	@media (min-width: 767px) {
+		font-size: 1.7rem;
+	}
+	@media (min-width: 1200px) {
+		font-size: 2.6rem;
+	}
+	@media (min-width: 1800px) {
+	}
 `;
 
 const Quote = (props) => {
-	const { value } = props;
+	const {value} = props;
 
 	return (
 		<>
-			<StyledBackgroundImage>
-				<StyledWrapper>
-					<StyledQuote>{value.quote}</StyledQuote>
-					<StyledAuthor>-{value.author}</StyledAuthor>
-					<div>
-						<a
-							href={` ${props.value.author}`}
-							target="_blank"
-							rel="noopener noreferrer"
-						></a>
-						<StyledButton onClick={props.onQuoteChange}>New Quote</StyledButton>
-					</div>
-				</StyledWrapper>
-			</StyledBackgroundImage>
+			<StyledWrapper>
+				<StyledQuote>{value.quote}</StyledQuote>
+				<StyledAuthor>-{value.author}</StyledAuthor>
+				<StyledButton onClick={props.onQuoteChange}>New Quote</StyledButton>
+			</StyledWrapper>
 		</>
 	);
 };

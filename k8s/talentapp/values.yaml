@@ -1,0 +1,15 @@
+replicas: '1'
+namespace: t2-talentprogram-project-b
+image:
+  repository: repository
+  tag: tag
+resources:
+  requests:
+    cpu: '250m'
+    memory: '512Mi'
+  limits:
+    cpu: '250m'
+    memory: '512Mi'
+ingress:
+  host: hostname
+  ingress_class: nginx-internal

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: t2-porting-ingress
+  namespace: { { .Values.namespace } }
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/proxy-body-size: '10m'
+    kubernetes.io/ingress.class: { { .Values.ingress.ingress_class } }
+spec:
+  rules:
+    - host: { { .Values.ingress.host | quote } }
+      http:
+        paths:
+          - backend:
+              serviceName: { { .Chart.Name } }
+              servicePort: 80
+            path: '/'

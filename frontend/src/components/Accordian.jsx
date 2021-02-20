@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-
+import { ReactComponent as ChevronLogo } from '../assets/arrow-down-outline.svg';
 const StyledTextContainer = styled.div`
 	p {
 		:first-child {
@@ -18,7 +18,7 @@ const Container = styled.div`
 	flex-grow: 1;
 	flex-direction: column;
 	border-bottom: 1px solid black;
-	padding: 2.25rem 0;
+	padding: 3rem;
 	margin: auto;
 
 	${StyledTextContainer} {
@@ -30,37 +30,24 @@ const Container = styled.div`
 		visibility: ${({ expanded }) => (expanded ? 'visible' : 'hidden')};
 	}
 `;
-const StyledAccoridonButton = styled.a`
-	display: inline-block;
-
-	border: 0.1em solid #ffffff;
-	margin: 0 0.3em 0.3em 0;
-	border-radius: 0.12em;
-	box-sizing: border-box;
-	text-decoration: none;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	color: white;
-	text-align: center;
-	transition: all 0.2s;
-	border: 2px solid black;
-	background-color: #17181a;
+const StyledAccordAndText = styled.div`
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
 `;
+const StyledChevronLogo = styled.a`
+	cursor: pointer;
+`;
+const StyledAccoridonButton = styled.a``;
 const StyledAccoridanTitle = styled.h5`
-	display: inline-block;
+	font-family: 'News Cycle', sans-serif;
+	font-weight: bold;
+`;
 
-	border: 0.1em solid #ffffff;
-
-	border-radius: 0.12em;
-	box-sizing: border-box;
-	text-decoration: none;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	color: white;
-	text-align: center;
-	transition: all 0.2s;
-	border: 2px solid black;
-	background-color: #17181a;
+const StyledChildren = styled.h5`
+	font-family: 'News Cycle', sans-serif;
+	font-weight: 200;
+	font-size: 20px;
 `;
 const Accordion = ({
 	title,
@@ -102,13 +89,19 @@ const Accordion = ({
 				<h4 inverted={inverted}>{title}</h4>
 				{/* <Icon icon={chevronDown} /> */}
 			</StyledAccoridonButton>
-			<StyledTextContainer>
-				<div ref={ref}>
-					<StyledAccoridanTitle inverted={inverted}>
-						{children}
-					</StyledAccoridanTitle>
-				</div>
-			</StyledTextContainer>
+			<StyledAccordAndText>
+				<StyledChevronLogo>
+					<ChevronLogo height="32px" width="32px" />
+				</StyledChevronLogo>
+
+				<StyledTextContainer>
+					<div ref={ref}>
+						<StyledAccoridanTitle inverted={inverted}>
+							<StyledChildren>{children}</StyledChildren>
+						</StyledAccoridanTitle>
+					</div>
+				</StyledTextContainer>
+			</StyledAccordAndText>
 		</Container>
 	);
 };

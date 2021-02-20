@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import Accordion from '../components/Accordian';
 import Footer from '../components/Footer';
-import { useHistory } from 'react-router-dom';
-import { ReactComponent as HamburgerLogo } from '../assets/menu-outline.svg';
-import radio from '../assets/radio.jpg';
+import {useHistory} from 'react-router-dom';
+import {ReactComponent as HamburgerLogo} from '../assets/menu-outline.svg';
+import {ReactComponent as HomeLogo} from '../assets/home-outline.svg';
+import thinkingman from '../assets/thouhgts.png';
+import robot from '../assets/robot.png';
+import music from '../assets/music.png';
+import academic from '../assets/academic.png';
+import whiteboardman from '../assets/whiteboardman.png';
 
 const StyledHeadline = styled.h1`
 	margin-bottom: 2rem;
+	color: #333;
 `;
 
 const StyledImage = styled.img`
 	width: 100%;
-	height: 25rem;
 	justify-self: flex-end;
 	order: -1;
 	@media (min-width: 767px) {
@@ -29,23 +34,26 @@ const StyledImageLeft = styled(StyledImage)`
 const StyledText = styled.text`
 	font-weight: 400;
 	font-style: bold;
+	color: #222;
 `;
 const StyledTextWrapper = styled.div`
 	width: 100%;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
+	font-family: 'News Cycle', sans-serif;
+
 	@media (min-width: 767px) {
 		width: 50%;
 	}
 `;
 const StyledLink = styled(Link)`
 	margin-right: 0.5rem;
-	padding: 0.5rem 0.5rem 1rem 0.5rem;
-
+	padding: 1rem;
+	color: #fff;
 	text-decoration: none;
 	font-family: 'News Cycle', sans-serif;
-	display: none;
+	/* display: none; */
 	@media (min-width: 767px) {
 		display: inline-block;
 	}
@@ -55,16 +63,31 @@ const StyledLogoLink = styled(Link)`
 	margin-right: 0.5rem;
 	padding: 0.5rem;
 	display: inline-block;
+	font-family: 'News Cycle', sans-serif;
+
 	@media (min-width: 767px) {
 		display: none;
 	}
 `;
 
-const Nav = styled.nav`
-	background-color: #17181a;
-	display: flex;
-	justify-content: flex-end;
+const StyledHomeLink = styled(Link)`
+	margin-right: 0.5rem;
+	padding: 1rem;
+	color: #fff;
+	text-decoration: none;
 	font-family: 'News Cycle', sans-serif;
+	display: none;
+	@media (min-width: 767px) {
+		display: inline-block;
+	}
+`;
+
+const Nav = styled.nav`
+	background-color: #222;
+	display: flex;
+	justify-content: space-between;
+	font-family: 'News Cycle', sans-serif;
+	letter-spacing: 1.5px;
 	@media (min-width: 450px) {
 	}
 	@media (min-width: 767px) {
@@ -100,7 +123,7 @@ const StyledAnchor = styled.a`
 		height: 490%;
 		width: 140%;
 		// background: #78c7d2;
-		background: #d35400;
+		background: #e86462;
 		-webkit-transition: all 0.5s ease-in-out;
 		transition: all 0.5s ease-in-out;
 		-webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
@@ -115,12 +138,14 @@ const StyledContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
 	width: 100%;
-	padding: 1rem 1rem 0 1rem;
+	padding: 2rem 1rem 2rem 1rem;
 	@media (min-width: 450px) {
 	}
 	@media (min-width: 767px) {
 		flex-direction: row;
+		padding: 3rem 1rem 3rem 1rem;
 	}
 	@media (min-width: 1200px) {
 	}
@@ -128,17 +153,45 @@ const StyledContainer = styled.div`
 	}
 `;
 
-const StyledWrapper = styled.div``;
+const StyledContainerColored = styled(StyledContainer)`
+	background-color: #eee;
+`;
+
+const StyledWrapper = styled.div`
+	color: #333;
+`;
 
 const StyledNavText = styled.h3`
-	border-bottom: 2px solid white;
+	/* border-bottom: 2px solid white; */
 	font-size: 14px;
-	line-height: 28px;
 	color: #fff;
 	letter-spacing: 5%;
 	${StyledLink}:hover & {
 		color: #ccc;
-		border-bottom: 2px solid #ccc;
+	}
+	@media (min-width: 767px) {
+		${StyledLink}:hover & {
+			color: #ccc;
+			border-bottom: 2px solid #ccc;
+		}
+	}
+`;
+
+const StyledNavContainer = styled.div`
+	position: absolute;
+	background-color: #222;
+	flex-direction: column;
+	opacity: 0.8;
+	top: 3.4rem;
+	display: ${(props) => (props.isVisible ? 'flex' : 'none')};
+
+	@media (min-width: 767px) {
+		position: relative;
+		background-color: transparent;
+		flex-direction: row;
+		opacity: 1;
+		top: 0;
+		display: flex;
 	}
 `;
 
@@ -150,37 +203,36 @@ const StyledSpan = styled.span`
 const StyledFlexbox = styled.div``;
 const StartPage = () => {
 	const history = useHistory();
+	const [isVisible, setIsVisible] = useState(false);
+
 	return (
 		<>
 			<Nav>
-				<StyledLink>
-					<StyledNavText>Home</StyledNavText>
-				</StyledLink>
-				<StyledLink to='/whiteboard'>
-					<StyledNavText>Whiteboard</StyledNavText>
-				</StyledLink>
-				<StyledLink to='/happythoughts'>
-					<StyledNavText>Share your thoughts</StyledNavText>
-				</StyledLink>
-				<StyledLink to='/chatt'>
-					<StyledNavText>Chatt</StyledNavText>
-				</StyledLink>
-				<StyledLink to='/stickies'>
-					<StyledNavText>Stickies</StyledNavText>
-				</StyledLink>
-				<StyledLink to='/quote-generator'>
-					<StyledNavText>Quote generator</StyledNavText>
-				</StyledLink>
-				<StyledLink to='/developer-sounds'>
-					<StyledNavText>The sounds of...</StyledNavText>
-				</StyledLink>
-				<StyledLogoLink>
+				<StyledHomeLink>
+					<HomeLogo height='22px' width='22px' />
+				</StyledHomeLink>
+				<StyledLogoLink onClick={() => setIsVisible(!isVisible)}>
 					<HamburgerLogo height='32px' width='32px' fill='white' />
 				</StyledLogoLink>
+				<StyledNavContainer isVisible={isVisible}>
+					<StyledLink to='/whiteboard'>
+						<StyledNavText>Whiteboard</StyledNavText>
+					</StyledLink>
+					<StyledLink to='/stickies'>
+						<StyledNavText>Stickies</StyledNavText>
+					</StyledLink>
+					<StyledLink to='/happythoughts'>
+						<StyledNavText>Share your thoughts</StyledNavText>
+					</StyledLink>
+
+					<StyledLink to='/developer-sounds'>
+						<StyledNavText>The sounds of...</StyledNavText>
+					</StyledLink>
+				</StyledNavContainer>
 			</Nav>
 
 			<StyledFlexbox>
-				<StyledContainer>
+				<StyledContainerColored>
 					<StyledTextWrapper>
 						<StyledHeadline>Online whiteboard</StyledHeadline>
 
@@ -194,9 +246,27 @@ const StartPage = () => {
 						</StyledAnchor>
 					</StyledTextWrapper>
 
-					<StyledImage src='https://images.unsplash.com/photo-1598520106830-8c45c2035460?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2767&q=80' />
-				</StyledContainer>
+					<StyledImage src={whiteboardman} />
+				</StyledContainerColored>
+
 				<StyledContainer>
+					<StyledTextWrapper>
+						<StyledHeadline>Stickies</StyledHeadline>
+
+						<StyledText>
+							This is a virtual whiteboard filled with stickies
+							<br />
+							that helps you and your team collaborate <br />
+							to bring the best ideas to light.
+						</StyledText>
+						<StyledAnchor onClick={() => history.push('/stickies')}>
+							<StyledSpan>EXPLORE NOW</StyledSpan>
+						</StyledAnchor>
+					</StyledTextWrapper>
+
+					<StyledImageLeft src={robot} />
+				</StyledContainer>
+				<StyledContainerColored>
 					<StyledTextWrapper>
 						<StyledHeadline>Share Your Thoughts</StyledHeadline>
 
@@ -210,44 +280,8 @@ const StartPage = () => {
 						</StyledAnchor>
 					</StyledTextWrapper>
 
-					<StyledImageLeft
-						alt='happy'
-						src='https://images.unsplash.com/photo-1524117074681-31bd4de22ad3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80'
-					/>
-				</StyledContainer>
-
-				<StyledContainer>
-					<StyledTextWrapper>
-						<StyledHeadline>Talent chatt</StyledHeadline>
-
-						<StyledText>
-							This is a virtual whiteboard that helps <br />
-							you and your team collaborate <br />
-							to bring the best ideas to light.
-						</StyledText>
-						<StyledAnchor onClick={() => history.push('/chatt')}>
-							<StyledSpan>EXPLORE NOW</StyledSpan>
-						</StyledAnchor>
-					</StyledTextWrapper>
-
-					<StyledImage src='https://images.unsplash.com/photo-1488998287214-1e668a8e0dc4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' />
-				</StyledContainer>
-				<StyledContainer>
-					<StyledTextWrapper>
-						<StyledHeadline>Quote generator</StyledHeadline>
-
-						<StyledText>
-							This is a virtual whiteboard that helps <br />
-							you and your team collaborate <br />
-							to bring the best ideas to light.
-						</StyledText>
-						<StyledAnchor onClick={() => history.push('/quote-generator')}>
-							<StyledSpan>EXPLORE NOW</StyledSpan>
-						</StyledAnchor>
-					</StyledTextWrapper>
-
-					<StyledImageLeft src='https://images.unsplash.com/photo-1488998287214-1e668a8e0dc4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' />
-				</StyledContainer>
+					<StyledImage alt='happy' src={thinkingman} />
+				</StyledContainerColored>
 				<StyledContainer>
 					<StyledTextWrapper>
 						<StyledHeadline>The sounds of developers</StyledHeadline>
@@ -261,8 +295,24 @@ const StartPage = () => {
 						</StyledAnchor>
 					</StyledTextWrapper>
 
-					<StyledImage src={radio} />
+					<StyledImageLeft src={music} />
 				</StyledContainer>
+				<StyledContainerColored>
+					<StyledTextWrapper>
+						<StyledHeadline>Quote generator</StyledHeadline>
+
+						<StyledText>
+							Generate a quote <br />
+							that will inspire you <br />
+							and your team.
+						</StyledText>
+						<StyledAnchor onClick={() => history.push('/quote-generator')}>
+							<StyledSpan>EXPLORE NOW</StyledSpan>
+						</StyledAnchor>
+					</StyledTextWrapper>
+
+					<StyledImage src={academic} />
+				</StyledContainerColored>
 			</StyledFlexbox>
 			<StyledWrapper>
 				<Accordion title='Why is the sky blue?'>

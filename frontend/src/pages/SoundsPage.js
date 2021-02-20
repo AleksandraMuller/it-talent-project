@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import useSound from 'use-sound';
 import trial from '../assets/trial.m4a';
 import styled from 'styled-components';
 import developer from '../assets/developer.png';
-import { ReactComponent as PlayLogo } from '../assets/play-circle-outline.svg';
-import { ButtonGroup } from '../styles/Whiteboard.styles';
+import {ReactComponent as PlayLogo} from '../assets/play-circle-outline.svg';
+import {ReactComponent as PauseLogo} from '../assets/pause-circle-outline.svg';
+import {ButtonGroup} from '../styles/Whiteboard.styles';
+import computerguy from '../assets/computer-guy.png';
+import typing from '../assets/typing.wav';
+import compiledCode from '../assets/codecompiled.m4a';
+import toilet from '../assets/toilet.m4a';
+import notCompiled from '../assets/notcompiled.m4a';
+import coffee from '../assets/coffee.m4a';
+import codeBroke from '../assets/codebroke.m4a';
+import screenShare from '../assets/screenshare.m4a';
 
 const StyledTitle = styled.h3`
 	span {
@@ -21,7 +30,8 @@ const ButtonLeft = styled.button`
 
 	cursor: pointer;
 	margin-bottom: 2rem;
-
+	border: none;
+	outline: none;
 	@media (min-width: 1200px) {
 		&:nth-child(1) {
 			margin-left: 10rem;
@@ -36,7 +46,8 @@ const ButtonRight = styled.button`
 	background-color: transparent;
 	cursor: pointer;
 	margin-bottom: 2rem;
-
+	border: none;
+	outline: none;
 	@media (min-width: 1200px) {
 		&:nth-child(1) {
 			margin-right: 10rem;
@@ -82,12 +93,16 @@ const Container = styled.div`
 const Image = styled.img`
 	display: block;
 	margin: auto;
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+
 	width: 20rem;
 	@media (min-width: 767px) {
-		width: 40rem;
+		width: 38rem;
+		margin-top: 4rem;
+		padding: 0;
 	}
 	@media (min-width: 1200px) {
-		width: 50rem;
 	}
 `;
 
@@ -101,14 +116,14 @@ const Span = styled.span`
 const SpanMiddle = styled.span`
 	@media (min-width: 767px) {
 		position: absolute;
-		left: 50%;
+		left: 53%;
 	}
 `;
 const SpanEnd = styled.span`
 	@media (min-width: 767px) {
 		font-size: 5rem;
 		position: absolute;
-		left: 52%;
+		left: 55%;
 	}
 `;
 
@@ -123,7 +138,52 @@ const Text = styled.p`
 `;
 
 const SoundsPage = () => {
-	const [play] = useSound(trial);
+	const [song, setSong] = useState();
+	const [play, {stop}] = useSound(song);
+
+	const [playingCodeCompiled, setPlayingCodeCompiled] = useState(false);
+	const [playingNotCompiled, setPlayingNotCompiled] = useState(false);
+	const [playingCoffee, setPlayingCoffee] = useState(false);
+	const [playingHome, setPlayingHome] = useState(false);
+	const [playingKeyboard, setPlayingKeyboard] = useState(false);
+	const [playingCodeBreaks, setPlayingCodeBreaks] = useState(false);
+	const [playingScreenSharing, setPlayingScreenSharing] = useState(false);
+
+	const playCodeCompiled = () => {
+		playingCodeCompiled ? stop() : play();
+		setPlayingCodeCompiled(!playingCodeCompiled);
+	};
+
+	const playCodeNotCompiled = () => {
+		playingNotCompiled ? stop() : play();
+		setPlayingNotCompiled(!playingNotCompiled);
+	};
+
+	const playCoffee = () => {
+		setPlayingCoffee(!playingCoffee);
+		playingCoffee ? stop() : play();
+	};
+
+	const playHome = () => {
+		setPlayingHome(!playingHome);
+		playingHome ? stop() : play();
+	};
+
+	const playKeyboard = () => {
+		setPlayingKeyboard(!playingKeyboard);
+		playingKeyboard ? stop() : play();
+	};
+
+	const playCodeBreaks = () => {
+		setPlayingCodeBreaks(!playingCodeBreaks);
+		playingCodeBreaks ? stop() : play();
+	};
+
+	const playScreenShot = () => {
+		setPlayingScreenSharing(!playingScreenSharing);
+		playingScreenSharing ? stop() : play();
+	};
+
 	return (
 		<Container>
 			<TitleWrapper>
@@ -135,38 +195,76 @@ const SoundsPage = () => {
 					<SpanEnd>developers </SpanEnd>
 				</StyledTitle>
 			</TitleWrapper>
-			<Image src={developer}></Image>
+			<Image src={computerguy}></Image>
 			<ButtonWrapper>
 				<ButtonWrapperLeft>
-					<ButtonLeft onClick={play}>
+					<ButtonLeft
+						onClick={playCodeCompiled}
+						onMouseDown={() => setSong(compiledCode)}>
 						<Text>When the code compiled</Text>
-						<PlayLogo height='40px' width='40px' />
+						{playingCodeCompiled ? (
+							<PauseLogo height='40px' width='40px' />
+						) : (
+							<PlayLogo height='40px' width='40px' />
+						)}
 					</ButtonLeft>
-					<ButtonLeft onClick={play}>
+					<ButtonLeft
+						onClick={playCodeNotCompiled}
+						onMouseDown={() => setSong(notCompiled)}>
 						<Text>When the code is not compiling</Text>
-						<PlayLogo height='40px' width='40px' />
+						{playingNotCompiled ? (
+							<PauseLogo height='40px' width='40px' />
+						) : (
+							<PlayLogo height='40px' width='40px' />
+						)}
 					</ButtonLeft>
-					<ButtonLeft onClick={play}>
+					<ButtonLeft onClick={playCoffee} onMouseDown={() => setSong(coffee)}>
 						<Text>The coffee effect</Text>
-						<PlayLogo height='40px' width='40px' />
+						{playingCoffee ? (
+							<PauseLogo height='40px' width='40px' />
+						) : (
+							<PlayLogo height='40px' width='40px' />
+						)}
 					</ButtonLeft>
-					<ButtonLeft onClick={play}>
+					<ButtonLeft onClick={playHome} onMouseDown={() => setSong(toilet)}>
 						<Text>When working from home</Text>
-						<PlayLogo height='40px' width='40px' />
+						{playingHome ? (
+							<PauseLogo height='40px' width='40px' />
+						) : (
+							<PlayLogo height='40px' width='40px' />
+						)}
 					</ButtonLeft>
 				</ButtonWrapperLeft>
 				<ButtonWrapperRight>
-					<ButtonRight onClick={play}>
+					<ButtonRight
+						onClick={playKeyboard}
+						onMouseDown={() => setSong(typing)}>
 						<Text>The keyboard sounds</Text>
-						<PlayLogo height='40px' width='40px' />
+						{playingKeyboard ? (
+							<PauseLogo height='40px' width='40px' />
+						) : (
+							<PlayLogo height='40px' width='40px' />
+						)}
 					</ButtonRight>
-					<ButtonRight onClick={play}>
+					<ButtonRight
+						onClick={playCodeBreaks}
+						onMouseDown={() => setSong(codeBroke)}>
 						<Text>When code suddenly breaks</Text>
-						<PlayLogo height='40px' width='40px' />
+						{playingCodeBreaks ? (
+							<PauseLogo height='40px' width='40px' />
+						) : (
+							<PlayLogo height='40px' width='40px' />
+						)}
 					</ButtonRight>
-					<ButtonRight onClick={play}>
+					<ButtonRight
+						onClick={playScreenShot}
+						onMouseDown={() => setSong(screenShare)}>
 						<Text>When screen sharing</Text>
-						<PlayLogo height='40px' width='40px' />
+						{playingScreenSharing ? (
+							<PauseLogo height='40px' width='40px' />
+						) : (
+							<PlayLogo height='40px' width='40px' />
+						)}
 					</ButtonRight>
 				</ButtonWrapperRight>
 			</ButtonWrapper>

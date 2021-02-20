@@ -22,6 +22,16 @@ export const addThoughtMutation = gql`
 	}
 `;
 
+export const deleteThoughtMutation = gql`
+	mutation($id: ID) {
+		deleteThought(id: $id) {
+			id
+			message
+			hearts
+			createdAt
+		}
+	}
+`;
 export const updateHeartMutation = gql`
 	mutation($id: ID, $hearts: Int!) {
 		updateHeart(id: $id, hearts: $hearts) {

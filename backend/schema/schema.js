@@ -8,6 +8,7 @@ import {
 	GraphQLInt,
 } from 'graphql';
 import Thought from '../models/Thought';
+import Note from '../models/Note';
 
 const ThoughtType = new GraphQLObjectType({
 	name: 'Thought',
@@ -15,6 +16,16 @@ const ThoughtType = new GraphQLObjectType({
 		id: { type: GraphQLID },
 		message: { type: GraphQLString },
 		hearts: { type: GraphQLInt },
+		createdAt: { type: GraphQLString },
+	}),
+});
+
+const NoteType = new GraphQLObjectType({
+	name: 'Note',
+	fields: () => ({
+		id: { type: GraphQLID },
+		title: { type: GraphQLString },
+		text: { type: GraphQLString },
 		createdAt: { type: GraphQLString },
 	}),
 });
@@ -33,6 +44,19 @@ const RootQuery = new GraphQLObjectType({
 			type: new GraphQLList(ThoughtType),
 			resolve(parent, args, { filter }) {
 				return Thought.find({});
+			},
+		},
+		note: {
+			type: NoteType,
+			args: { id: { type: GraphQLID } },
+			resolve(parent, args) {
+				return Note.findById(args.id);
+			},
+		},
+		notes: {
+			type: new GraphQLList(NoteType),
+			resolve(parent, args, { filter }) {
+				return Note.find({});
 			},
 		},
 	},
@@ -55,6 +79,17 @@ const Mutation = new GraphQLObjectType({
 				return thought.save();
 			},
 		},
+
+		deleteThought: {
+			type: ThoughtType,
+			args: {
+				id: { type: GraphQLID },
+			},
+			resolve(parent, args) {
+				return Thought.findByIdAndDelete(args.id);
+			},
+		},
+
 		updateHeart: {
 			type: ThoughtType,
 			args: {
@@ -71,6 +106,24 @@ const Mutation = new GraphQLObjectType({
 					},
 					{ new: true }
 				);
+			},
+		},
+		addNote: {
+			type: NoteType,
+			args: {
+				title: {
+					type: new GraphQLNonNull(GraphQLString),
+				},
+				text: {
+					type: new GraphQLNonNull(GraphQLString),
+				},
+			},
+			resolve(parent, args) {
+				let note = new Note({
+					title: args.title,
+					text: args.text,
+				});
+				return note.save();
 			},
 		},
 	},

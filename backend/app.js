@@ -8,14 +8,18 @@ import cors from 'cors';
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 //allow cross-origin requests
 app.use(cors());
 
 const mongoUrl = process.env['MONGO_URL'];
 
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoUrl, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false,
+});
 
 // mongoose.connect(mongoUrl);
 mongoose.connection.once('open', () => {
