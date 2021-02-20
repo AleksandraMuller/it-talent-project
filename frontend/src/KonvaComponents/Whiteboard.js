@@ -179,44 +179,45 @@ const Whiteboard = () => {
 			</StyledTitle>
 			<ButtonGroup>
 				<Button onClick={addRectangular}>
-					<StyledSquareLogo height='32px' width='32px' stroke='grey' />
+					<StyledSquareLogo height="32px" width="32px" stroke="grey" />
 				</Button>
 				<Button onClick={addCircle}>
 					{' '}
-					<StyledCircleLogo height='32px' width='32px' stroke='grey' />
+					<StyledCircleLogo height="32px" width="32px" stroke="grey" />
 				</Button>
 				<Button onClick={addStar}>
 					{' '}
-					<StyledStarLogo height='32px' width='32px' stroke='grey' />
+					<StyledStarLogo height="32px" width="32px" stroke="grey" />
 				</Button>
 				<Button onClick={addArrow}>
 					{' '}
-					<StyledArrowLogo height='32px' width='32px' stroke='grey' />
+					<StyledArrowLogo height="32px" width="32px" stroke="grey" />
 				</Button>
 				{/* <Button>Emojis??</Button> */}
 				<Button onClick={drawLine}>
 					{' '}
-					<StyledPenLogo height='32px' width='32px' stroke='grey' />
+					<StyledPenLogo height="32px" width="32px" stroke="grey" />
 				</Button>
 				<Button onClick={eraseLine}>
-					<StyledTrashLogo height='32px' width='32px' stroke='grey' />
+					<StyledTrashLogo height="32px" width="32px" stroke="grey" />
 				</Button>
 				<Button onClick={addText}>
-					<StyledTextLogo height='32px' width='32px' stroke='grey' />
+					<StyledTextLogo height="32px" width="32px" stroke="grey" />
 				</Button>
 
 				{/* <Button>Undo</Button> */}
 				<StyledInput
-					type='file'
-					name='file'
-					id='file'
-					onChange={onImageChange}></StyledInput>
-				<StyledLabel for='file'>
+					type="file"
+					name="file"
+					id="file"
+					onChange={onImageChange}
+				></StyledInput>
+				<StyledLabel for="file">
 					{' '}
-					<ImageLogo height='32px' width='32px' stroke='grey' />
+					<ImageLogo height="32px" width="32px" stroke="grey" />
 				</StyledLabel>
 				<Button onClick={addScreenShot}>
-					<StyledScreenShotLogo height='32px' width='32px' stroke='grey' />
+					<StyledScreenShotLogo height="32px" width="32px" stroke="grey" />
 				</Button>
 			</ButtonGroup>
 			<Stage
@@ -224,7 +225,8 @@ const Whiteboard = () => {
 				width={window.innerWidth}
 				height={window.innerHeight}
 				onMouseDown={checkDeselect}
-				onTouchStart={checkDeselect}>
+				onTouchStart={checkDeselect}
+			>
 				<Layer ref={layerEl}>
 					{images.map((image, index) => {
 						return (
@@ -247,7 +249,7 @@ const Whiteboard = () => {
 						return (
 							<CircleSize
 								key={index}
-								fill='red'
+								fill="red"
 								shapeProps={circle}
 								isSelected={circle.id === selectedId}
 								onSelect={() => {
@@ -266,7 +268,7 @@ const Whiteboard = () => {
 						return (
 							<Rectangle
 								key={index}
-								fill='blue'
+								fill="blue"
 								shapeProps={rect}
 								isSelected={rect.id === selectedId}
 								onSelect={() => {
