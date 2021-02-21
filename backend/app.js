@@ -50,10 +50,10 @@ app.get('*', (req, res) => {
 
 	if (protected.includes(path)) {
 		// Return the actual file
-		res.sendFile(`${__dirname}/frontend/build/${path}`);
+		res.sendFile(`${__dirname}../frontend/build/${path}`);
 	} else {
 		// Otherwise, redirect to /build/index.html
-		res.sendFile(`${__dirname}/frontend/build/index.html`);
+		res.sendFile(`${__dirname}../frontend/build/index.html`);
 	}
 });
 
