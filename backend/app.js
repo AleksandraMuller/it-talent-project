@@ -3,7 +3,7 @@ import { graphqlHTTP } from 'express-graphql';
 import schema from './schema/schema.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import path from "path"
+import path from 'path';
 
 //ADD TO USE ENV VARIABLE
 require('dotenv').config();
@@ -15,9 +15,6 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, '../frontend/build')));
-
-
-
 
 const mongoUrl = process.env['MONGO_URL'];
 
@@ -42,7 +39,8 @@ app.use(
 );
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', '../frontend/build/index.html'));
+	// res.sendFile(path.join(__dirname, '../frontend/build', '../frontend/build/index.html'));
+	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
 });
 
 app.listen(port, () => {
