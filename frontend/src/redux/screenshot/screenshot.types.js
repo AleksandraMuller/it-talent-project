@@ -1,3 +1,4 @@
 export const ScreenshotActionTypes = {
 	ADD_SCREENSHOT: 'ADD_SCREENSHOT',
+	DELETE_SCREENSHOT: 'DELETE_SCREENSHOT',
 };

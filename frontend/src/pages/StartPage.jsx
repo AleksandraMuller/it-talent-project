@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Accordion from '../components/Accordian';
 import Footer from '../components/Footer';
-import {useHistory} from 'react-router-dom';
-import {ReactComponent as HamburgerLogo} from '../assets/menu-outline.svg';
-import {ReactComponent as HomeLogo} from '../assets/home-outline.svg';
+import { useHistory } from 'react-router-dom';
+import { ReactComponent as HamburgerLogo } from '../assets/menu-outline.svg';
+import { ReactComponent as HomeLogo } from '../assets/home-outline.svg';
 import thinkingman from '../assets/thouhgts.png';
 import robot from '../assets/robot.png';
 import music from '../assets/music.png';
@@ -208,7 +208,7 @@ const StartPage = () => {
 	return (
 		<>
 			<Nav>
-				<StyledHomeLink>
+				<StyledHomeLink onClick={() => history.push('/')}>
 					<HomeLogo height='22px' width='22px' />
 				</StyledHomeLink>
 				<StyledLogoLink onClick={() => setIsVisible(!isVisible)}>

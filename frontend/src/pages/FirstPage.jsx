@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import music from '../assets/music.png';
 import robot from '../assets/robot.png';
 import first from '../assets/first.png';

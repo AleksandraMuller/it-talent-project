@@ -12,7 +12,11 @@ export const screenshotReducer = (state = INITIAL_STATE, action) => {
 				...state,
 				screenshots: addAnswerToArray(state.screenshots, action.payload),
 			};
-
+		case ScreenshotActionTypes.DELETE_SCREENSHOT:
+			return {
+				...state,
+				screenshots: state.screenshots.filter((s) => s !== action.payload),
+			};
 		default:
 			return state;
 	}

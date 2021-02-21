@@ -10,8 +10,7 @@ import { ReactComponent as ImageLogo } from '../assets/image-outline.svg';
 
 import { addLine } from '../services/brush.js';
 import { getText } from '../services/textNode';
-import Konva from 'konva';
-import styled from 'styled-components';
+
 import { useScreenshot } from 'use-screenshot-hook';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -39,7 +38,6 @@ import {
 const { v1: uuidv1 } = require('uuid');
 
 const Whiteboard = () => {
-	let history = useHistory();
 	let dispatch = useDispatch();
 
 	const { image, takeScreenshot } = useScreenshot();
@@ -178,7 +176,11 @@ const Whiteboard = () => {
 	const addScreenShot = () => {
 		takeScreenshot();
 		setScreenShots([...screenshots, image]);
-		dispatch(addScreenshot(image));
+		if (image === null) {
+			return;
+		} else {
+			dispatch(addScreenshot(image));
+		}
 	};
 
 	console.log(image);
