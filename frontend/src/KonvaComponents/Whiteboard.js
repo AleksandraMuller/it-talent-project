@@ -7,6 +7,7 @@ import ArrowSize from './ArrowSize';
 
 import { Stage, Layer } from 'react-konva';
 import { ReactComponent as ImageLogo } from '../assets/image-outline.svg';
+
 import { addLine } from '../services/brush.js';
 import { getText } from '../services/textNode';
 import Konva from 'konva';
@@ -22,6 +23,7 @@ import {
 	StyledSquareLogo,
 	StyledCircleLogo,
 	StyledArrowLogo,
+	StyledSaveLogo,
 	StyledPenLogo,
 	StyledStarLogo,
 	StyledTrashLogo,
@@ -60,6 +62,7 @@ const Whiteboard = () => {
 	const [selectedId, selectShape] = useState(null);
 	const [rectangles, setRectangles] = useState([]);
 	const [shapes, setShapes] = useState([]);
+	const history = useHistory();
 
 	const drawLine = () => {
 		addLine(stageEl.current.getStage(), layerEl.current, 'brush', 'pink');
@@ -225,6 +228,9 @@ const Whiteboard = () => {
 				</StyledLabel>
 				<Button onClick={addScreenShot}>
 					<StyledScreenShotLogo height='32px' width='32px' stroke='grey' />
+				</Button>
+				<Button onClick={() => history.push('/screenshots')}>
+					<StyledSaveLogo height='32px' width='32px' stroke='grey' />
 				</Button>
 			</ButtonGroup>
 			<Stage
