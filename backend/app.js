@@ -3,7 +3,7 @@ import { graphqlHTTP } from 'express-graphql';
 import schema from './schema/schema.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
-// import path from 'path';
+import path from 'path';
 
 //ADD TO USE ENV VARIABLE
 require('dotenv').config();
@@ -42,7 +42,7 @@ app.get('/*', (req, res) => {
 	res.sendFile(
 		path.join(__dirname, '../frontend/build', '../frontend/build/index.html')
 	);
-	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
+	// res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
 });
 
 app.listen(port, () => {
