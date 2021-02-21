@@ -45,7 +45,18 @@ app.use(
 // 	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
 // });
 
-app.get('/*', (req, res) => {
+app.use((req, res, next) => {
+	const error = new Error('Not Found'); //Error object
+	error.status = 404;
+
+	//res.render('./404'); by default in express applications you would render a 404 page
+
+	res.status(200).sendFile(path.join(__dirname + '/frontend/build/index.html'));
+
+	next(error);
+});
+
+app.get('/', (req, res) => {
 	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
 app.get('/startpage', (req, res) => {
