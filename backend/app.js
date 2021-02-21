@@ -14,7 +14,7 @@ const port = process.env.PORT || 5000;
 //allow cross-origin requests
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 const mongoUrl = process.env['MONGO_URL'];
 
@@ -39,53 +39,32 @@ app.use(
 );
 
 // app.get('/*', (req, res) => {
-// res.sendFile(
-// 	path.join(__dirname, '../frontend/build', '../frontend/build/index.html')
-// );
-// res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
+// 	res.sendFile(
+// 		path.join(__dirname, '../frontend/build', '../frontend/build/index.html')
+// 	);
+// 	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
 // });
 
 app.get('/', (req, res) => {
-	res.sendFile(
-		path.join(__dirname, '../frontend/build', '../frontend/build/index.html')
-	);
-	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
+	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
 app.get('/startpage', (req, res) => {
-	res.sendFile(
-		path.join(__dirname, '../frontend/build', '../frontend/build/index.html')
-	);
-	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
+	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
 app.get('/whiteboard', (req, res) => {
-	res.sendFile(
-		path.join(__dirname, '../frontend/build', '../frontend/build/index.html')
-	);
-	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
+	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
 app.get('/happythoughts', (req, res) => {
-	res.sendFile(
-		path.join(__dirname, '../frontend/build', '../frontend/build/index.html')
-	);
-	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
+	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
 app.get('/stickies', (req, res) => {
-	res.sendFile(
-		path.join(__dirname, '../frontend/build', '../frontend/build/index.html')
-	);
-	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
+	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
 app.get('/quote-generator', (req, res) => {
-	res.sendFile(
-		path.join(__dirname, '../frontend/build', '../frontend/build/index.html')
-	);
-	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
+	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
 app.get('/developer-sounds', (req, res) => {
-	res.sendFile(
-		path.join(__dirname, '../frontend/build', '../frontend/build/index.html')
-	);
-	res.sendFile(path.resolve(__dirname + '../frontend/build/index.html'));
+	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
 
 app.listen(port, () => {
