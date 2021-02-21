@@ -7,6 +7,7 @@ import { ReactComponent as PenLogo } from '../assets/pencil-outline.svg';
 import { ReactComponent as TrashLogo } from '../assets/trash-outline.svg';
 import { ReactComponent as TextLogo } from '../assets/text-outline.svg';
 import { ReactComponent as ScreenShotLogo } from '../assets/camera-outline.svg';
+import { ReactComponent as SaveLogo } from '../assets/save-outline.svg';
 
 export const ButtonGroup = styled.div`
 	display: flex;
@@ -207,6 +208,24 @@ export const StyledTextLogo = styled(TextLogo)`
 `;
 
 export const StyledScreenShotLogo = styled(ScreenShotLogo)`
+	${Button}:focus & {
+		animation: wiggle 125ms infinite;
+		animation-timing-function: linear;
+	}
+	@keyframes wiggle {
+		0% {
+			transform: translate(2px, 0);
+		}
+		50% {
+			transform: translate(-2px, 0);
+		}
+		100% {
+			transform: translate(2px, 0);
+		}
+	}
+`;
+
+export const StyledSaveLogo = styled(SaveLogo)`
 	${Button}:focus & {
 		animation: wiggle 125ms infinite;
 		animation-timing-function: linear;
