@@ -19,6 +19,7 @@
     "lodash": "^4.17.20",
     "mongoose": "5.11.15",
     "nodemon": "^2.0.4"
-  }
+  },
+  "homepage" : "https://virtual-app-talents.herokuapp.com/"
   
 }
