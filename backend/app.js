@@ -8,15 +8,13 @@ import cors from 'cors';
 //ADD TO USE ENV VARIABLE
 require('dotenv').config();
 
-let protected = ['transformed.js', 'main.css', 'favicon.ico'];
-
 const app = express();
 const port = process.env.PORT || 5000;
 
 //allow cross-origin requests
 app.use(cors());
 
-// app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 const mongoUrl = process.env['MONGO_URL'];
 
@@ -46,15 +44,11 @@ app.use(
 // });
 
 app.get('*', (req, res) => {
-	let path = req.params['0'].substring(1);
-
-	if (protected.includes(path)) {
-		// Return the actual file
-		res.sendFile(`${__dirname}../frontend/build/${path}`);
-	} else {
-		// Otherwise, redirect to /build/index.html
-		res.sendFile(`${__dirname}../frontend/build/index.html`);
-	}
+	let url = path.join(__dirname, '../frontend/build', 'index.html');
+	if (!url.startsWith('/app/'))
+		// since we're on local windows
+		url = url.substring(1);
+	res.sendFile(url);
 });
 
 app.listen(port, () => {
