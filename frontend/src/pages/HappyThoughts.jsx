@@ -193,8 +193,8 @@ const HappyThoughts = (props) => {
 		if (data.loading === true) {
 			return <div>Loading thoughts...</div>;
 		} else {
-			return data.thoughts
-				.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
+			return data?.thoughts
+				?.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
 				.map((thought) => {
 					return (
 						<ThoughtCard
@@ -210,7 +210,6 @@ const HappyThoughts = (props) => {
 		}
 	};
 
-	console.log(text);
 
 	const addNewThought = (e) => {
 		e.preventDefault();

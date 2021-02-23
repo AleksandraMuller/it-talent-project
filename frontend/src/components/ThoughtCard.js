@@ -58,7 +58,6 @@ const ThoughtCard = ({
 	createdAt,
 	deleteOneThought,
 }) => {
-	console.log(typeof createdAt);
 	return (
 		<StyledCardContainer key={id}>
 			<StyledLogoAndMessage>

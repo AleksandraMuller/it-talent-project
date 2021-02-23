@@ -108,7 +108,6 @@ const QuotePage = (props) => {
 		}
 	}, [quotesList]);
 
-	console.log(quotesList);
 
 	return (
 		<>

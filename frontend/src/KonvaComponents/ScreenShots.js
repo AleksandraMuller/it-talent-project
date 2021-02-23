@@ -78,7 +78,6 @@ const ScreenShots = () => {
 	);
 
 	const mapped = selectors.screenshots.map((s) => s);
-	console.log(mapped);
 
 	const deleteShot = (shot) => {
 		dispatch(deleteScreenshot(shot));
