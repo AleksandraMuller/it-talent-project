@@ -13,8 +13,8 @@ import { ApolloProvider } from 'react-apollo';
 //apollo client setup
 
 const client = new ApolloClient({
-	uri: 'http://localhost:4000/graphql',
-	credentials: 'same-origin',
+	uri: 'http://localhost:5000/graphql',
+	// credentials: 'same-origin',
 });
 
 const App = () => {
