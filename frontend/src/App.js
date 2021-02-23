@@ -1,5 +1,5 @@
 import StartPage from './pages/StartPage';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Whiteboard from './KonvaComponents/Whiteboard';
 import HappyThoughts from './pages/HappyThoughts';
 import ScreenShots from './KonvaComponents/ScreenShots';
