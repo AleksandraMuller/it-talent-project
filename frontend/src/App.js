@@ -20,7 +20,7 @@ const client = new ApolloClient({
 const App = () => {
 	return (
 		<ApolloProvider client={client}>
-			<Router>
+			<Router basename="/">
 				<Switch>
 					<Route exact path='/' component={FirstPage} />
 					<Route exact path='/startpage' component={StartPage} />
