@@ -13,7 +13,7 @@ import { ApolloProvider } from 'react-apollo';
 //apollo client setup
 
 const client = new ApolloClient({
-	uri: 'http://localhost:5000/graphql',
+	uri: 'https://virtual-app-talents.herokuapp.com/graphql',
 	// credentials: 'same-origin',
 });
 
