@@ -16,10 +16,10 @@ const StyledContainer = styled.div`
 	align-items: center;
 	flex-direction: column;
 	width: 100vw;
-	min-height: 100vh;
 	padding-top: 6rem;
 	@media (min-width: 767px) {
 		flex-direction: row;
+		padding-top: 2rem;
 	}
 `;
 
@@ -110,11 +110,9 @@ const StyledTitle = styled.h1`
 `;
 
 const TopContainer = styled.div`
-	position: absolute;
-	top: 1rem;
-	width: 100%;
 	display: flex;
 	justify-content: center;
+	padding-top: 1rem;
 `;
 const StyledStickyImage = styled.img`
 	width: 2rem;

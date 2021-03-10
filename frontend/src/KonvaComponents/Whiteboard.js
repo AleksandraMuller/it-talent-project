@@ -183,7 +183,6 @@ const Whiteboard = () => {
 		}
 	};
 
-	console.log(image);
 
 	return (
 		<StyledGrid>
