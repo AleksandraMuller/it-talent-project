@@ -103,7 +103,7 @@ const StyledTitle = styled.h1`
 	font-family: 'News Cycle', sans-serif;
 	letter-spacing: 3px;
 	color: #333;
-	font-size: 1rem;
+	font-size: 1.5rem;
 	@media (min-width: 767px) {
 		font-size: 2.5rem;
 	}
@@ -113,6 +113,7 @@ const TopContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	padding-top: 1rem;
+	align-items: center;
 `;
 const StyledStickyImage = styled.img`
 	width: 2rem;

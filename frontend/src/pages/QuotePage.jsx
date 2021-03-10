@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Quote from '../components/Quote';
 import styled from 'styled-components';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import owl from '../assets/owl.png';
 import decorations from '../assets/decorations.png';
 import lamp from '../assets/lamp.png';
@@ -62,19 +62,19 @@ const StyledImage = styled.img`
 
 const StyledImageBottom = styled.img`
 	width: 5rem;
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
 	@media (min-width: 767px) {
 		width: 10rem;
 	}
 `;
-const StyledBottomContainer = styled.div`
-	position: absolute;
-	bottom: 1rem;
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-`;
+
 const StyledImageBottomLeft = styled.img`
 	width: 5rem;
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
 	@media (min-width: 767px) {
 		width: 10rem;
 	}
@@ -83,7 +83,7 @@ const QuotePage = (props) => {
 	const history = useHistory();
 	const [quotesList, setQuotesList] = useState([]);
 	const [quote, setQuote] = useState({});
-	const [error, setError] = useState({status: false, message: ''});
+	const [error, setError] = useState({ status: false, message: '' });
 
 	const generateRandomNumber = (max) => {
 		return Math.floor(Math.random() * max);
@@ -98,7 +98,7 @@ const QuotePage = (props) => {
 	};
 
 	useEffect(() => {
-		setError({status: false, message: ''});
+		setError({ status: false, message: '' });
 		if (quotesList.length === 0) {
 			fetch(api_url)
 				.then((res) => res.json())
@@ -108,23 +108,17 @@ const QuotePage = (props) => {
 		}
 	}, [quotesList]);
 
-
 	return (
 		<>
 			<StyledAnchor onClick={() => history.push('/')}>
 				<StyledSpan>Home</StyledSpan>
 			</StyledAnchor>
 			<StyledImage src={owl}></StyledImage>
-			<StyledBottomContainer>
-				<StyledImageBottomLeft src={lamp}></StyledImageBottomLeft>
-				<StyledImageBottom src={decorations}></StyledImageBottom>
-			</StyledBottomContainer>
+
+			<StyledImageBottomLeft src={lamp}></StyledImageBottomLeft>
+			<StyledImageBottom src={decorations}></StyledImageBottom>
 
 			<StyledApp>
-				{/* <StyledContainer> */}
-
-				{/* </StyledContainer> */}
-
 				{error.status ? (
 					<h1>{error.message}</h1>
 				) : (
