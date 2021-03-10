@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
-import {graphql} from 'react-apollo';
-import {flowRight as compose} from 'lodash';
-import {ReactComponent as Pluslogo} from '../assets/add-circle-outline.svg';
-import bookLady from '../assets/ladyOrange.png';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { graphql } from 'react-apollo';
+import { flowRight as compose } from 'lodash';
+import { ReactComponent as Pluslogo } from '../assets/add-circle-outline.svg';
 import redLady from '../assets/ladyInRed.png';
 
 import {
@@ -152,6 +151,7 @@ const StyledInput = styled.input`
 	background-color: #f6f6f6;
 	outline-color: #e86462;
 	border: none;
+	border-radius: none;
 	font-size: 1rem;
 
 	@media (min-width: 1200px) {
@@ -210,7 +210,6 @@ const HappyThoughts = (props) => {
 		}
 	};
 
-
 	const addNewThought = (e) => {
 		e.preventDefault();
 		text !== '' &&
@@ -218,7 +217,7 @@ const HappyThoughts = (props) => {
 				variables: {
 					message: text,
 				},
-				refetchQueries: [{query: getThoughtQuery}],
+				refetchQueries: [{ query: getThoughtQuery }],
 			});
 		setText('');
 	};
@@ -230,7 +229,7 @@ const HappyThoughts = (props) => {
 				id,
 				hearts: heart,
 			},
-			refetchQueries: [{query: getThoughtQuery}],
+			refetchQueries: [{ query: getThoughtQuery }],
 		});
 	};
 	const deleteOneThought = (e, id) => {
@@ -239,7 +238,7 @@ const HappyThoughts = (props) => {
 			variables: {
 				id,
 			},
-			refetchQueries: [{query: getThoughtQuery}],
+			refetchQueries: [{ query: getThoughtQuery }],
 		});
 	};
 
@@ -276,8 +275,8 @@ const HappyThoughts = (props) => {
 };
 
 export default compose(
-	graphql(getThoughtQuery, {name: 'getThoughtQuery'}),
-	graphql(addThoughtMutation, {name: 'addThoughtMutation'}),
-	graphql(updateHeartMutation, {name: 'updateHeartMutation'}),
-	graphql(deleteThoughtMutation, {name: 'deleteThoughtMutation'})
+	graphql(getThoughtQuery, { name: 'getThoughtQuery' }),
+	graphql(addThoughtMutation, { name: 'addThoughtMutation' }),
+	graphql(updateHeartMutation, { name: 'updateHeartMutation' }),
+	graphql(deleteThoughtMutation, { name: 'deleteThoughtMutation' })
 )(HappyThoughts);

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import {ReactComponent as HeartLogo} from '../assets/heart-outline.svg';
-import {ReactComponent as TrashLogo} from '../assets/trash-outline.svg';
+import { ReactComponent as HeartLogo } from '../assets/heart-outline.svg';
+import { ReactComponent as TrashLogo } from '../assets/trash-outline.svg';
 
 const StyledCardContainer = styled.div`
 	background-color: #4c4c4c;
@@ -21,7 +21,7 @@ const StyledCardContainer = styled.div`
 const StyledButton = styled.button`
 	display: flex;
 	padding: 5px 10px;
-	font-size: 16px;
+	font-size: 13px;
 	color: white;
 	border: none;
 	border-radius: 8px;
@@ -69,7 +69,16 @@ const ThoughtCard = ({
 
 			<StyledHeartDateWrapper>
 				<StyledButton onClick={updateHeart}>
-					<HeartLogo height='22px' width='22px' />
+					{hearts > 0 ? (
+						<HeartLogo height='22px' width='22px' fill='white' stroke='none' />
+					) : (
+						<HeartLogo
+							height='22px'
+							width='22px'
+							fill='transparent'
+							stroke='white'
+						/>
+					)}
 					{hearts}
 				</StyledButton>
 				<StyledDate>{moment(parseInt(createdAt)).fromNow()}</StyledDate>
