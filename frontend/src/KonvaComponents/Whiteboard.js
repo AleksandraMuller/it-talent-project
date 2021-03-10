@@ -176,13 +176,9 @@ const Whiteboard = () => {
 	const addScreenShot = () => {
 		takeScreenshot();
 		setScreenShots([...screenshots, image]);
-		if (image === null) {
-			return;
-		} else {
-			dispatch(addScreenshot(image));
-		}
+		console.log(image);
+		dispatch(addScreenshot(image));
 	};
-
 
 	return (
 		<StyledGrid>

@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as ChevronLogo } from '../assets/arrow-down-outline.svg';
+import { ReactComponent as ChevronLogoUp } from '../assets/chevron-up-outline.svg';
+
 const StyledTextContainer = styled.div`
 	p {
 		:first-child {
@@ -42,6 +44,7 @@ const StyledAccoridonButton = styled.a``;
 const StyledAccoridanTitle = styled.h5`
 	font-family: 'News Cycle', sans-serif;
 	font-weight: bold;
+	font-size: 20px;
 `;
 
 const StyledChildren = styled.h5`
@@ -49,6 +52,13 @@ const StyledChildren = styled.h5`
 	font-weight: 200;
 	font-size: 20px;
 `;
+
+const StyledTitle = styled.h4`
+	font-family: 'News Cycle', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+`;
+
 const Accordion = ({
 	title,
 	children,
@@ -79,21 +89,22 @@ const Accordion = ({
 			className={className}
 			expanded={expanded}
 			height={height}
-			{...rest}
-		>
+			{...rest}>
 			<StyledAccoridonButton
 				onClick={handleClick}
 				inverted={inverted}
-				expanded={expanded}
-			>
-				<h4 inverted={inverted}>{title}</h4>
+				expanded={expanded}>
+				<StyledTitle inverted={inverted}>{title}</StyledTitle>
 				{/* <Icon icon={chevronDown} /> */}
 			</StyledAccoridonButton>
 			<StyledAccordAndText>
-				<StyledChevronLogo>
-					<ChevronLogo height="32px" width="32px" />
+				<StyledChevronLogo onClick={handleClick}>
+					{expanded ? (
+						<ChevronLogoUp height='32px' width='32px' />
+					) : (
+						<ChevronLogo height='32px' width='32px' />
+					)}
 				</StyledChevronLogo>
-
 				<StyledTextContainer>
 					<div ref={ref}>
 						<StyledAccoridanTitle inverted={inverted}>
