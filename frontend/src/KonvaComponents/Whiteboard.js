@@ -219,7 +219,7 @@ const Whiteboard = () => {
 					name='file'
 					id='file'
 					onChange={onImageChange}></StyledInput>
-				<StyledLabel for='file'>
+				<StyledLabel htmlFor='file'>
 					{' '}
 					<ImageLogo height='32px' width='32px' stroke='grey' />
 				</StyledLabel>

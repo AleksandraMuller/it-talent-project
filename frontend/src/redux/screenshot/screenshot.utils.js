@@ -1,1 +1,6 @@
-export const addAnswerToArray = (shots, shot) => [...shots, shot];
+export const addAnswerToArray = (shots, shot) => {
+	if (shot !== undefined) {
+		return [...shots, shot];
+	}
+	return [...shots];
+};

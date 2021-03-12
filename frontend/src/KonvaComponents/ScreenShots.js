@@ -88,7 +88,7 @@ const ScreenShots = () => {
 			<StyledFlexContainer>
 				{selectors.screenshots.map((shot) => {
 					return (
-						<StyledWrapper>
+						<StyledWrapper key={shot}>
 							<StyledButton onClick={() => deleteShot(shot)}>
 								<TrashLogo height='32px' width='32px' />
 							</StyledButton>
