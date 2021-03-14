@@ -25,7 +25,6 @@ const Rectangle = ({
 				ref={shapeRef}
 				{...shapeProps}
 				draggable
-				fill='blue'
 				onDragEnd={onDragEnd}
 				onTransformEnd={(e) => {
 					//transformer is changing scale

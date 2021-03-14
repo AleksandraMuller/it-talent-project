@@ -24,8 +24,6 @@ const StarSize = ({
 				onClick={onSelect}
 				ref={shapeRef}
 				{...shapeProps}
-				fill='yellow'
-				stroke='black'
 				innerRadius={40}
 				outerRadius={70}
 				strokeWidth={4}

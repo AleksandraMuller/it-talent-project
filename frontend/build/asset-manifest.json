@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.22ba3de3.chunk.css",
-    "main.js": "/static/js/main.a75c4a9b.chunk.js",
-    "main.js.map": "/static/js/main.a75c4a9b.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.dafa37b4.js",
-    "runtime-main.js.map": "/static/js/runtime-main.dafa37b4.js.map",
-    "static/js/2.10e40534.chunk.js": "/static/js/2.10e40534.chunk.js",
-    "static/js/2.10e40534.chunk.js.map": "/static/js/2.10e40534.chunk.js.map",
-    "static/js/3.2591abdd.chunk.js": "/static/js/3.2591abdd.chunk.js",
-    "static/js/3.2591abdd.chunk.js.map": "/static/js/3.2591abdd.chunk.js.map",
+    "main.js": "/static/js/main.0038f567.chunk.js",
+    "main.js.map": "/static/js/main.0038f567.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.31f3f60a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.31f3f60a.js.map",
+    "static/js/2.59132b74.chunk.js": "/static/js/2.59132b74.chunk.js",
+    "static/js/2.59132b74.chunk.js.map": "/static/js/2.59132b74.chunk.js.map",
+    "static/js/3.174e42d9.chunk.js": "/static/js/3.174e42d9.chunk.js",
+    "static/js/3.174e42d9.chunk.js.map": "/static/js/3.174e42d9.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.22ba3de3.chunk.css.map": "/static/css/main.22ba3de3.chunk.css.map",
-    "static/js/2.10e40534.chunk.js.LICENSE.txt": "/static/js/2.10e40534.chunk.js.LICENSE.txt",
-    "static/js/3.2591abdd.chunk.js.LICENSE.txt": "/static/js/3.2591abdd.chunk.js.LICENSE.txt",
+    "static/js/2.59132b74.chunk.js.LICENSE.txt": "/static/js/2.59132b74.chunk.js.LICENSE.txt",
+    "static/js/3.174e42d9.chunk.js.LICENSE.txt": "/static/js/3.174e42d9.chunk.js.LICENSE.txt",
     "static/media/academic.dbb16d3a.png": "/static/media/academic.dbb16d3a.png",
     "static/media/add-circle-outline.d78ae947.svg": "/static/media/add-circle-outline.d78ae947.svg",
     "static/media/arrow-down-outline.6e2c90ee.svg": "/static/media/arrow-down-outline.6e2c90ee.svg",
@@ -53,9 +53,9 @@
     "static/media/whiteboardman.7a37f84a.png": "/static/media/whiteboardman.7a37f84a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.dafa37b4.js",
-    "static/js/2.10e40534.chunk.js",
+    "static/js/runtime-main.31f3f60a.js",
+    "static/js/2.59132b74.chunk.js",
     "static/css/main.22ba3de3.chunk.css",
-    "static/js/main.a75c4a9b.chunk.js"
+    "static/js/main.0038f567.chunk.js"
   ]
 }

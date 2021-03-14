@@ -25,7 +25,6 @@ const ArrowSize = ({
 				ref={shapeRef}
 				{...shapeProps}
 				draggable
-				fill='blue'
 				points={[0, 0, 100, 100]}
 				pointerLength={20}
 				pointerWidth={20}

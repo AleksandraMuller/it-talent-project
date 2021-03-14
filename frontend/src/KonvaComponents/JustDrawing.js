@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Stage, Layer, Line, Text } from 'react-konva';
+import Konva from 'konva';
 
 const JustDrawing = (tool, isDrawing, lines) => {
 	return (
@@ -9,7 +10,7 @@ const JustDrawing = (tool, isDrawing, lines) => {
 				<Line
 					key={i}
 					points={line.points}
-					stroke='#df4b26'
+					stroke={Konva.Util.getRandomColor()}
 					strokeWidth={5}
 					tension={0.5}
 					lineCap='round'

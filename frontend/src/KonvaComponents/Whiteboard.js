@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Img from './Img';
 import Rectangle from './Rectangle';
 import CircleSize from './CircleSize';
 import StarSize from './StarSize';
 import ArrowSize from './ArrowSize';
+import Konva from 'konva';
 
 import { Stage, Layer } from 'react-konva';
 import { ReactComponent as ImageLogo } from '../assets/image-outline.svg';
@@ -63,7 +64,12 @@ const Whiteboard = () => {
 	const history = useHistory();
 
 	const drawLine = () => {
-		addLine(stageEl.current.getStage(), layerEl.current, 'brush', 'pink');
+		addLine(
+			stageEl.current.getStage(),
+			layerEl.current,
+			'brush',
+			Konva.Util.getRandomColor()
+		);
 	};
 
 	const eraseLine = () => {
@@ -77,7 +83,7 @@ const Whiteboard = () => {
 			width: 100,
 			height: 100,
 			radius: 40,
-			fill: 'red',
+			fill: Konva.Util.getRandomColor(),
 			strokeWidth: 5,
 		};
 		setCircles([...circles, circleAttrs]);
@@ -90,7 +96,7 @@ const Whiteboard = () => {
 			y: 100,
 			width: 100,
 			height: 100,
-			fill: 'blue',
+			fill: Konva.Util.getRandomColor(),
 		};
 		setRectangles([...rectangles, rectAttrs]);
 	};
@@ -102,8 +108,8 @@ const Whiteboard = () => {
 			numPoints: 6,
 			innerRadius: 40,
 			outerRadius: 70,
-			fill: 'yellow',
-			stroke: 'black',
+			fill: Konva.Util.getRandomColor(),
+			stroke: Konva.Util.getRandomColor(),
 			strokeWidth: 4,
 		};
 		setStars([...stars, starAttrs]);
@@ -116,8 +122,6 @@ const Whiteboard = () => {
 			points: [0, 0, 100, 100],
 			pointerLength: 20,
 			pointerWidth: 20,
-			fill: 'black',
-			stroke: 'black',
 			strokeWidth: 4,
 		};
 		setArrows([...arrows, arrow]);
@@ -177,8 +181,12 @@ const Whiteboard = () => {
 		takeScreenshot();
 		setScreenShots([...screenshots, image]);
 		console.log(image);
-		dispatch(addScreenshot(image));
 	};
+
+	useEffect(() => {
+		dispatch(addScreenshot(image));
+	}, [image]);
+	// dispatch(addScreenshot(image));
 
 	return (
 		<StyledGrid>
@@ -277,7 +285,6 @@ const Whiteboard = () => {
 						return (
 							<Rectangle
 								key={index}
-								fill='blue'
 								shapeProps={rect}
 								isSelected={rect.id === selectedId}
 								onSelect={() => {
