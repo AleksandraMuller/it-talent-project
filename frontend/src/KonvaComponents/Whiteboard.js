@@ -17,6 +17,9 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addScreenshot } from '../redux/screenshot/screenshot.actions.js';
 
+import ColorPicker from '../components/ColorPicker';
+import { CustomPicker } from 'react-color';
+
 import {
 	Button,
 	ButtonGroup,
@@ -61,14 +64,20 @@ const Whiteboard = () => {
 	const [selectedId, selectShape] = useState(null);
 	const [rectangles, setRectangles] = useState([]);
 	const [shapes, setShapes] = useState([]);
+	const [backgroundColor, setBackgroundColor] = useState('#FFFFFF');
+	const [color, setColor] = useState('#FFF000');
+	const [changeColor, setChangeColor] = useState(backgroundColor);
+
 	const history = useHistory();
+
+	const ColorPickerWrapped = CustomPicker(ColorPicker);
 
 	const drawLine = () => {
 		addLine(
 			stageEl.current.getStage(),
 			layerEl.current,
 			'brush',
-			Konva.Util.getRandomColor()
+			backgroundColor
 		);
 	};
 
@@ -83,7 +92,7 @@ const Whiteboard = () => {
 			width: 100,
 			height: 100,
 			radius: 40,
-			fill: Konva.Util.getRandomColor(),
+			fill: backgroundColor,
 			strokeWidth: 5,
 		};
 		setCircles([...circles, circleAttrs]);
@@ -96,7 +105,7 @@ const Whiteboard = () => {
 			y: 100,
 			width: 100,
 			height: 100,
-			fill: Konva.Util.getRandomColor(),
+			fill: backgroundColor,
 		};
 		setRectangles([...rectangles, rectAttrs]);
 	};
@@ -108,8 +117,7 @@ const Whiteboard = () => {
 			numPoints: 6,
 			innerRadius: 40,
 			outerRadius: 70,
-			fill: Konva.Util.getRandomColor(),
-			stroke: Konva.Util.getRandomColor(),
+			fill: backgroundColor,
 			strokeWidth: 4,
 		};
 		setStars([...stars, starAttrs]);
@@ -128,19 +136,6 @@ const Whiteboard = () => {
 	};
 
 	const addText = () => {
-		// const simpleText = {
-		// 	x: 20,
-		// 	y: 60,
-		// 	text: 'ADD TEXT',
-		// 	fontSize: 18,
-		// 	fontFamily: 'Calibri',
-		// 	fill: '#555',
-		// 	width: 300,
-		// 	padding: 20,
-		// 	align: 'center',
-		// };
-
-		// setTexts([...texts, simpleText]);
 		getText(stageEl.current.getStage(), layerEl.current);
 	};
 
@@ -193,6 +188,25 @@ const Whiteboard = () => {
 			<StyledTitle>
 				<StyledText>Not a Miro Board</StyledText>
 			</StyledTitle>
+			<div
+				style={{
+					position: 'absolute',
+					margin: 0,
+					padding: 0,
+					// background: backgroundColor,
+					top: '1rem',
+					right: '6rem',
+					zIndex: 100,
+				}}>
+				<ColorPickerWrapped
+					color={color}
+					setColor={setColor}
+					setBackgroundColor={setBackgroundColor}
+					setChangeColor={setChangeColor}
+					backgroundColor={backgroundColor}
+					changeColor={changeColor}
+				/>
+			</div>
 			<ButtonGroup>
 				<Button onClick={addRectangular}>
 					<StyledSquareLogo height='32px' width='32px' stroke='grey' />
@@ -266,7 +280,6 @@ const Whiteboard = () => {
 						return (
 							<CircleSize
 								key={index}
-								fill='red'
 								shapeProps={circle}
 								isSelected={circle.id === selectedId}
 								onSelect={() => {
@@ -278,6 +291,7 @@ const Whiteboard = () => {
 									setCircles(circle);
 								}}
 								onDragEnd={handleDragEnd}
+								changeColor={changeColor}
 							/>
 						);
 					})}
@@ -287,7 +301,7 @@ const Whiteboard = () => {
 								key={index}
 								shapeProps={rect}
 								isSelected={rect.id === selectedId}
-								onSelect={() => {
+								onSelect={(attr) => {
 									selectShape(rect.id);
 								}}
 								onChange={(newAttrs) => {
@@ -296,6 +310,8 @@ const Whiteboard = () => {
 									setRectangles(rects);
 								}}
 								onDragEnd={handleDragEnd}
+								backgroundColor={backgroundColor}
+								changeColor={changeColor}
 							/>
 						);
 					})}
@@ -315,6 +331,8 @@ const Whiteboard = () => {
 									setStars(starChange);
 								}}
 								onDragEnd={handleDragEnd}
+								backgroundColor={backgroundColor}
+								changeColor={changeColor}
 							/>
 						);
 					})}

@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Rect, Transformer } from 'react-konva';
+import Konva from 'konva';
 
 const Rectangle = ({
 	shapeProps,
@@ -7,6 +8,8 @@ const Rectangle = ({
 	onSelect,
 	onChange,
 	onDragEnd,
+	backgroundColor,
+	changeColor,
 }) => {
 	const shapeRef = useRef();
 	const trRef = useRef();
@@ -33,11 +36,13 @@ const Rectangle = ({
 					const scaleY = node.scaleY();
 					node.scaleX(1);
 					node.scaleY(1);
+
 					onChange({
 						x: node.x(),
 						y: node.y(),
 						width: node.width() * scaleX,
 						height: node.height() * scaleY,
+						fill: changeColor,
 					});
 				}}
 				onMouseEnter={(e) => {

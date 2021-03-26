@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Star, Transformer } from 'react-konva';
+import Konva from 'konva';
 
 const StarSize = ({
 	shapeProps,
@@ -7,6 +8,8 @@ const StarSize = ({
 	onSelect,
 	onChange,
 	onDragEnd,
+	backgroundColor,
+	changeColor,
 }) => {
 	const shapeRef = useRef();
 	const trRef = useRef();
@@ -44,6 +47,7 @@ const StarSize = ({
 						y: node.y(),
 						width: node.width() * scaleX,
 						height: node.height() * scaleY,
+						fill: changeColor,
 					});
 				}}
 				onMouseEnter={(e) => {

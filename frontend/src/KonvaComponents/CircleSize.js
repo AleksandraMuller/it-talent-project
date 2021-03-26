@@ -1,5 +1,6 @@
 import React from 'react';
 import { Circle, Transformer } from 'react-konva';
+import Konva from 'konva';
 
 const CircleSize = ({
 	shapeProps,
@@ -7,6 +8,7 @@ const CircleSize = ({
 	onSelect,
 	onChange,
 	onDragEnd,
+	changeColor,
 }) => {
 	const shapeRef = React.useRef();
 	const trRef = React.useRef();
@@ -23,7 +25,6 @@ const CircleSize = ({
 			<Circle
 				onClick={onSelect}
 				ref={shapeRef}
-				fill='red'
 				{...shapeProps}
 				draggable
 				onDragEnd={onDragEnd}
@@ -39,6 +40,7 @@ const CircleSize = ({
 						y: node.y(),
 						width: node.width() * scaleX,
 						height: node.height() * scaleY,
+						fill: changeColor,
 					});
 				}}
 				onMouseEnter={(e) => {
