@@ -8,6 +8,7 @@ import { ReactComponent as TrashLogo } from '../assets/trash-outline.svg';
 import { ReactComponent as TextLogo } from '../assets/text-outline.svg';
 import { ReactComponent as ScreenShotLogo } from '../assets/camera-outline.svg';
 import { ReactComponent as SaveLogo } from '../assets/save-outline.svg';
+import { ReactComponent as BrushLogo } from '../assets/brush-outline.svg';
 
 export const ButtonGroup = styled.div`
 	display: flex;
@@ -82,6 +83,30 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledSquareLogo = styled(SquareLogo)`
+	${Button}:focus & {
+		animation: wiggle 125ms infinite;
+		animation-timing-function: linear;
+	}
+	@keyframes wiggle {
+		0% {
+			transform: translate(2px, 0);
+		}
+		50% {
+			transform: translate(-2px, 0);
+		}
+		100% {
+			transform: translate(2px, 0);
+		}
+	}
+`;
+
+export const StyledBrushLogo = styled(BrushLogo)`
+	${Button} {
+		position: 'absolute';
+		top: '2rem';
+		right: '20rem';
+	}
+
 	${Button}:focus & {
 		animation: wiggle 125ms infinite;
 		animation-timing-function: linear;
@@ -242,3 +267,5 @@ export const StyledSaveLogo = styled(SaveLogo)`
 		}
 	}
 `;
+
+export const PickerContainer = styled.div``;

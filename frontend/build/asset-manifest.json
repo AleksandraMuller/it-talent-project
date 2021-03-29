@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.22ba3de3.chunk.css",
-    "main.js": "/static/js/main.a58a6dc1.chunk.js",
-    "main.js.map": "/static/js/main.a58a6dc1.chunk.js.map",
+    "main.js": "/static/js/main.153f91cd.chunk.js",
+    "main.js.map": "/static/js/main.153f91cd.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.9a55296a.js",
     "runtime-main.js.map": "/static/js/runtime-main.9a55296a.js.map",
     "static/js/2.4d49bfc5.chunk.js": "/static/js/2.4d49bfc5.chunk.js",
@@ -17,6 +17,7 @@
     "static/media/add-circle-outline.d78ae947.svg": "/static/media/add-circle-outline.d78ae947.svg",
     "static/media/arrow-down-outline.6e2c90ee.svg": "/static/media/arrow-down-outline.6e2c90ee.svg",
     "static/media/arrow-forward-outline.3ebce16b.svg": "/static/media/arrow-forward-outline.3ebce16b.svg",
+    "static/media/brush-outline.8ce54ea4.svg": "/static/media/brush-outline.8ce54ea4.svg",
     "static/media/camera-outline.5bc6ec9c.svg": "/static/media/camera-outline.5bc6ec9c.svg",
     "static/media/chevron-up-outline.de496ace.svg": "/static/media/chevron-up-outline.de496ace.svg",
     "static/media/codebroke.0a934632.m4a": "/static/media/codebroke.0a934632.m4a",
@@ -56,6 +57,6 @@
     "static/js/runtime-main.9a55296a.js",
     "static/js/2.4d49bfc5.chunk.js",
     "static/css/main.22ba3de3.chunk.css",
-    "static/js/main.a58a6dc1.chunk.js"
+    "static/js/main.153f91cd.chunk.js"
   ]
 }

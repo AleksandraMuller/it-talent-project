@@ -37,6 +37,8 @@ import {
 	StyledText,
 	StyledTitle,
 	StyledScreenShotLogo,
+	StyledBrushLogo,
+	PickerContainer,
 } from '../styles/Whiteboard.styles';
 
 const { v1: uuidv1 } = require('uuid');
@@ -67,6 +69,7 @@ const Whiteboard = () => {
 	const [backgroundColor, setBackgroundColor] = useState('#FFFFFF');
 	const [color, setColor] = useState('#FFF000');
 	const [changeColor, setChangeColor] = useState(backgroundColor);
+	const [visible, setVisible] = useState(false);
 
 	const history = useHistory();
 
@@ -178,6 +181,10 @@ const Whiteboard = () => {
 		console.log(image);
 	};
 
+	const handleColorPicker = () => {
+		setVisible(!visible);
+	};
+
 	useEffect(() => {
 		dispatch(addScreenshot(image));
 	}, [image]);
@@ -188,25 +195,38 @@ const Whiteboard = () => {
 			<StyledTitle>
 				<StyledText>Not a Miro Board</StyledText>
 			</StyledTitle>
-			<div
+			<Button
 				style={{
 					position: 'absolute',
-					margin: 0,
-					padding: 0,
-					// background: backgroundColor,
 					top: '1rem',
 					right: '6rem',
+					cursor: 'pointer',
 					zIndex: 100,
-				}}>
-				<ColorPickerWrapped
-					color={color}
-					setColor={setColor}
-					setBackgroundColor={setBackgroundColor}
-					setChangeColor={setChangeColor}
-					backgroundColor={backgroundColor}
-					changeColor={changeColor}
-				/>
-			</div>
+				}}
+				onClick={handleColorPicker}>
+				<StyledBrushLogo height='28px' width='28px' stroke='grey' />
+			</Button>
+			{visible && (
+				<PickerContainer
+					style={{
+						position: 'absolute',
+						margin: 0,
+						padding: 0,
+						// background: backgroundColor,
+						top: '3rem',
+						right: '6rem',
+						zIndex: 100,
+					}}>
+					<ColorPickerWrapped
+						color={color}
+						setColor={setColor}
+						setBackgroundColor={setBackgroundColor}
+						setChangeColor={setChangeColor}
+						backgroundColor={backgroundColor}
+						changeColor={changeColor}
+					/>
+				</PickerContainer>
+			)}
 			<ButtonGroup>
 				<Button onClick={addRectangular}>
 					<StyledSquareLogo height='32px' width='32px' stroke='grey' />
